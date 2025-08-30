@@ -156,15 +156,15 @@ It can be seen that the result content is consistent with the previous text, thu
 
 ## More
 
-For more info, please check below APIs and integration documents
+For more info, please check below APIs and integration documents.
 
-| API | Path | Integration Document |
+| API | Path | Integration Guidance |
 | ---- | ---- | ------------ |
 | [Veo Videos Generation API](http://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f) | `/veo/videos` | [Veo Videos Generation API Integration Guide](http://platform.acedata.cloud/documents/0df6db8d-8b46-4af8-bca5-a15166b938e2) |
 | [$t(document_title_veo_tasks_api)](http://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) | `/veo/tasks` | [Veo Tasks API Integration Guide](http://platform.acedata.cloud/documents/add58f98-765a-4c2a-b036-a60ee6044879) |
 
 Base URL: [https://api.acedata.cloud](https://api.acedata.cloud)
 
-## Support 
+## Support
 
 If you meet any issue, check our from [support info](https://platform.acedata.cloud/support).
