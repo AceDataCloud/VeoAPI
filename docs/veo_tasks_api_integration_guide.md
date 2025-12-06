@@ -20,7 +20,7 @@ There is a free quota available for first-time applicants, allowing you to use t
 
 ## Request Example
 
-The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the document [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f).
+The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the documentation [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f).
 
 We will take one task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
 
@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-After a successful request, the API will return the detailed information of the video task here. For example:
+Upon successful request, the API will return the detailed information of the video task here. For example:
 
 ```json
 {
@@ -133,7 +133,7 @@ The returned result contains multiple fields, with the request field being the r
 
 ## Batch Query Operation
 
-This is for querying the details of video tasks for multiple task IDs. Unlike the above, the action needs to be selected as retrieve_batch.
+This is for querying the details of video tasks for multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
 
 **Request Body** includes:
 
@@ -154,7 +154,7 @@ Some code examples are as follows:
 
 ### Response Example
 
-After a successful request, the API will return the specific details of all batch video tasks this time. For example:
+Upon successful request, the API will return the specific details of all batch video tasks this time. For example:
 ```json
 {
   "items": [
@@ -225,7 +225,7 @@ After a successful request, the API will return the specific details of all batc
 }
 ```
 
-The returned result contains multiple fields, among which items include the specific details of batch video tasks, and the specific information of each video task is the same as the fields mentioned above.
+The returned result contains multiple fields, among which items include the specific details of batch video tasks, and each video task's specific information is the same as the fields mentioned above.
 
 - `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the return result of querying a single task above.
 - `count`, the number of video tasks in this batch query.

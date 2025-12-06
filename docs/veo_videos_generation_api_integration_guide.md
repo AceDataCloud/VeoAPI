@@ -2,8 +2,6 @@
 
 This article will introduce the integration instructions for the Veo Videos Generation API, which can generate official Veo videos by inputting custom parameters.
 
-Next, we will introduce the integration instructions for the Veo Videos Generation API.
-
 ## Application Process
 
 To use the API, you need to first apply for the corresponding service on the [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f) page. After entering the page, click the "Acquire" button, as shown in the image:
@@ -12,32 +10,68 @@ To use the API, you need to first apply for the corresponding service on the [Ve
 
 If you are not logged in or registered, you will be automatically redirected to the login page inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
 
-When applying for the first time, there will be a free quota available for you to use the API for free.
+There will be a free quota offered upon your first application, allowing you to use the API for free.
 
 ## Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action` with the value `text2video`, which mainly includes three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get_1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`, as detailed below:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`, as detailed below:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
 Here we can see that we have set the Request Headers, including:
 
 - `accept`: the format of the response result you want to receive, filled in as `application/json`, which means JSON format.
-- `authorization`: the key to call the API, which can be selected directly after applying.
+- `authorization`: the key to call the API, which can be directly selected after application.
 
 Additionally, the Request Body is set, including:
 
-- `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `action`: the action for this video generation task, mainly including three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get_1080p`).
-- `image_urls`: when selecting the image to video action `image2video`, the links to the reference images for the first and last frames must be uploaded.
+- `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`.
+- `action`: the action for this video generation task, mainly including three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`).
+- `image_urls`: the links to the reference images for the first and last frames that must be uploaded when selecting the image-to-video action `image2video`.
 - `prompt`: the prompt.
-- `callback_url`: the URL for the callback result.
+- `callback_url`: the URL to receive the callback result.
+
+### 📌 Model Summary
+
+| **Model Name**                   | **Supported Modes**                          | **Image Input Rules**                        |
+| -------------------------- | --------------------------------- | --------------------------------- |
+| **veo2-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | Only supports **1 image** → First frame mode                |
+| **veo3-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo31-fast**             | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo31-fast-ingredients** | ❌ Text-to-video (not supported)<br>✅ **Forced multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
+| **veo2**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo3**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo31**                  | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+
+---
+
+### 🔑 Key Rules Explanation
+
+1. **General Logic**:
+   - **No image input** → Automatically triggers text-to-video mode.
+   - **Image input present** → Triggers image-to-video mode (specific behavior determined by the number of images).
+2. **Image-to-video Mode Types**:
+   - **First frame mode** (1 image): The first frame is fixed as the input image.
+   - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
+   - **Multi-image fusion mode** (1-3 images): Only supported by `veo31-fast-ingredients`, fuses multiple images to generate a video.
+3. **Mode Classification**:
+   - **Fast Mode**: `veo2-fast`, `veo3-fast`, `veo31-fast`, `veo31-fast-ingredients`.
+   - **Quality Mode**: `veo2`, `veo3`, `veo31` (higher generation quality).
+
+---
+
+### ⚠️ Notes
+
+- **The only model that requires image input**: `veo31-fast-ingredients` must provide images (1-3 images), otherwise it cannot run.
+- **Image quantity limit**:
+  - Except for `veo31-fast-ingredients`, other models support a maximum of **2 images** input.
+  - `veo2-fast` only supports **1 image** (other Fast models support 1-2 images).
 
 After selection, you can see that the corresponding code is also generated on the right side, as shown in the image:
 
 <p><img src="https://cdn.acedata.cloud/pmwh4y.png" width="500" class="m-auto"></p>
 
-Click the "Try" button to test, as shown in the above image, and we get the following result:
+Click the "Try" button to conduct a test, as shown in the image above, and we obtained the following result:
 
 ```json
 {
@@ -57,17 +91,16 @@ Click the "Try" button to test, as shown in the above image, and we get the foll
 ```
 
 The returned result contains multiple fields, described as follows:
+- `success`, the status of the video generation task at this time.
+- `task_id`, the ID of the video generation task at this time.
+- `data`, the result of the video generation task at this time.
+  - `id`, the video ID of the video generation task at this time.
+  - `video_url`, the video link of the video generation task at this time.
+  - `created_at`, the creation time of the video generation task at this time.
+  - `complete_at`, the completion time of the video generation task at this time.
+  - `state`, the status of the video generation task at this time.
 
-- `success`: the status of the video generation task at this time.
-- `task_id`: the ID of the video generation task at this time.
-- `data`: the result of the video generation task at this time.
-  - `id`: the video ID of the video generation task at this time.
-  - `video_url`: the video link of the video generation task at this time.
-  - `created_at`: the creation time of the video generation task at this time.
-  - `complete_at`: the completion time of the video generation task at this time.
-  - `state`: the status of the video generation task at this time.
-
-We can see that we have obtained satisfactory video information, and we only need to access the generated Veo video using the video link address in `data`.
+We can see that we have obtained satisfactory video information, and we only need to obtain the generated Veo video based on the video link address in the `data` result.
 
 Additionally, if you want to generate the corresponding integration code, you can directly copy the generated code, for example, the CURL code is as follows:
 
@@ -85,15 +118,15 @@ curl -X POST 'https://api.acedata.cloud/veo/videos' \
 
 ## Image to Video Function
 
-If you want to generate a video based on the first and last frame images, you can set the parameter `action` to `image2video` and input the array of first and last frame image links `image_urls`.
+If you want to generate a video based on the first and last frame images, you can set the parameter `action` to `image2video`, and input the array of first and last frame image links `image_urls`.
 
-Next, you must fill in the prompt for the next step to customize the generated video, specifying the following content:
+Next, we must fill in the prompt words needed for the next step to customize the generated video, which can specify the following content:
 
-- `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `image_urls`: when selecting the image to video action `image2video`, the links to the reference images for the first and last frames must be uploaded.
-- `prompt`: the prompt.
+- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
+- `image_urls`: when selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
+- `prompt`: prompt words.
 
-An example of the filled input is as follows:
+An example of filling in is as follows:
 
 <p><img src="https://cdn.acedata.cloud/8wvlqd.png" width="500" class="m-auto"></p>
 
@@ -125,7 +158,7 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.text)
 ```
 
-Clicking run, you can find that you will get a result, as follows:
+Clicking run, you can find that a result is obtained, as follows:
 
 ```json
 {
@@ -144,31 +177,32 @@ Clicking run, you can find that you will get a result, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the previous text, thus achieving the image to video function.
+It can be seen that the result content is consistent with the above text, thus achieving the image-to-video function.
 
-## Image to Video Function
+## Get 1080p Video Function
 
-If you want to get 1080p for an already generated Veo video, you can set the parameter `action` to `get_1080p` and input the ID of the video for which you need to obtain 1080p. The video ID can be obtained based on the basic usage, as shown in the image below:
+If you want to get 1080p for an already generated Veo video, you can set the parameter `action` to `get1080p`, and input the ID of the video that needs to be retrieved in 1080p. The video ID can be obtained based on basic usage, as shown in the following image:
+
 <p><img src="https://cdn.acedata.cloud/hacabc.png" width="500" class="m-auto"></p>
 
-At this point, you can see that the video ID is:
+At this time, you can see that the video ID is:
 
 ```json
 "id": "59f12222b1fa4fbe9331ff2400ad1583"
 ```
 
-> Note that the `video_id` in this video is the ID of the generated video. If you do not know how to generate a video, you can refer to the basic usage mentioned above to generate a video.
+> Note that the `video_id` here is the ID of the generated video. If you do not know how to generate a video, you can refer to the basic usage above to generate a video.
 
-Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
+Next, we must fill in the prompt words needed for the next step to customize the generated video, which can specify the following content:
 
-- `model`: The model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `video_id`: The reference video ID used to obtain the 1080p video.
+- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
+- `video_id`: the reference video ID used to get the 1080p video.
 
-An example of the filled form is as follows:
+An example of filling in is as follows:
 
 <p><img src="https://cdn.acedata.cloud/k56fhn.png" width="500" class="m-auto"></p>
 
-After filling it out, the code is automatically generated as follows:
+After filling in, the code is automatically generated as follows:
 
 <p><img src="https://cdn.acedata.cloud/8gn4cr.png" width="500" class="m-auto"></p>
 
@@ -191,27 +225,62 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above, thus achieving the function of obtaining the 1080p video.
+It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining a 1080p video.
+
+## Specify Video Size Generation
+
+If you want to specify the generation of a custom-sized Veo video, you can set the parameter `aspect_ratio` to the desired size. Next, we must fill in the prompt words needed for the next step to customize the generated video, which can specify the following content:
+
+- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
+- `aspect_ratio`: the size of the video, currently supporting: `16:9`, `16:9`, `3:4`, `4:3`, `1:1`, with the default being `16:9`.
+- `translation`: whether to enable automatic translation of prompt words, default is `false`.
+  An example of filling in is as follows:
+
+<p><img src="https://cdn.acedata.cloud/xau4cm.png" width="500" class="m-auto"></p>
+
+After filling in, the code is automatically generated as follows:
+
+<p><img src="https://cdn.acedata.cloud/55r589.png" width="500" class="m-auto"></p>
+
+Clicking run, you can find that a result is obtained, as follows:
+```json
+{
+  "success": true,
+  "task_id": "d2b93290-ab0e-4d20-ae45-60c062a32687",
+  "trace_id": "9834e64d-c8fe-43ae-8114-ee2b5f93d886",
+  "data": [
+    {
+      "id": "fc667e7d3b8f44beaa61a3c339af0e50",
+      "video_url": "https://platform.cdn.acedata.cloud/veo/d2b93290-ab0e-4d20-ae45-60c062a32687.mp4",
+      "created_at": "2025-08-24 20:09:06",
+      "complete_at": "2025-08-24 20:10:45",
+      "state": "succeeded"
+    }
+  ]
+}
+```
+
+It can be seen that the result content is consistent with the above text, which also achieves the function of generating videos of specified dimensions.
 
 ## Asynchronous Callback
 
-Since the time taken by the Veo Videos Generation API is relatively long, approximately 1-2 minutes, if the API does not respond for a long time, the HTTP request will keep the connection open, leading to additional system resource consumption. Therefore, this API also provides support for asynchronous callbacks.
+Due to the relatively long time required for the Veo Videos Generation API to generate, approximately 1-2 minutes, if the API does not respond for a long time, the HTTP request will keep the connection open, leading to additional system resource consumption. Therefore, this API also provides support for asynchronous callbacks.
 
-The overall process is: when the client initiates a request, an additional `callback_url` field is specified. After the client initiates the API request, the API will immediately return a result containing a `task_id` field, representing the current task ID. When the task is completed, the result of the generated video will be sent to the client-specified `callback_url` in the form of a POST JSON, which also includes the `task_id` field, allowing the task result to be associated by ID.
+The overall process is: when the client initiates a request, an additional `callback_url` field is specified. After the client initiates the API request, the API will immediately return a result containing a `task_id` field information, representing the current task ID. When the task is completed, the result of the generated video will be sent to the `callback_url` specified by the client in the form of a POST JSON, which also includes the `task_id` field, so that the task result can be associated by ID.
 
 Let’s understand how to operate specifically through an example.
 
-First, the Webhook callback is a service that can receive HTTP requests, and developers should replace it with the URL of their own HTTP server. For convenience in demonstration, we use a public Webhook sample site https://webhook.site/, where you can open the site to get a Webhook URL, as shown in the figure:
+First, the Webhook callback is a service that can receive HTTP requests, and developers should replace it with the URL of their own built HTTP server. For demonstration purposes, a public Webhook sample site https://webhook.site/ is used, and opening this site will provide a Webhook URL, as shown in the figure:
 
 ![](https://cdn.acedata.cloud/tbcnai.png)
 
 Copy this URL, and it can be used as a Webhook. The sample here is `https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc`.
 
-Next, we can set the `callback_url` field to the above Webhook URL while filling in the corresponding parameters, as shown in the figure:
+Next, we can set the `callback_url` field to the above Webhook URL, while filling in the corresponding parameters, as shown in the figure:
 
 <p><img src="https://cdn.acedata.cloud/rgivs2.png" width="500" class="m-auto"></p>
 
-Clicking run, you can find that an immediate result is obtained, as follows:
+Clicking run, you can find that a result will be obtained immediately, as follows:
 
 ```json
 {
@@ -242,7 +311,7 @@ The content is as follows:
 }
 ```
 
-It can be seen that the result contains a `task_id` field, and the other fields are similar to the above, allowing task association through this field.
+It can be seen that the result contains a `task_id` field, and the other fields are similar to the above text, allowing the task to be associated through this field.
 
 ## Error Handling
 
@@ -269,4 +338,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and reference images. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and reference images of the first frame. It is hoped that this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
