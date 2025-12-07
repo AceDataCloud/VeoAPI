@@ -17,38 +17,38 @@ To use the API, you need to first apply for the corresponding service on the [Ve
 
 If you are not logged in or registered, you will be automatically redirected to the login page inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
 
-There will be a free quota offered upon your first application, allowing you to use the API for free.
+There will be a free quota granted upon your first application, allowing you to use the API for free.
 
 ### Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`. The specific content is as follows:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`, with specific content as follows:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
 Here we can see that we have set the Request Headers, including:
 
-- `accept`: The format of the response result you want to receive, filled in as `application/json`, which means JSON format.
-- `authorization`: The key to call the API, which can be directly selected after application.
+- `accept`: the format of the response result you want to receive, filled in as `application/json`, which means JSON format.
+- `authorization`: the key to call the API, which can be directly selected after application.
 
 Additionally, the Request Body is set, including:
 
-- `model`: The model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`.
-- `action`: The action for this video generation task, mainly including three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`).
-- `image_urls`: The links to the reference images for the first and last frames that must be uploaded when selecting the image to video action `image2video`.
-- `prompt`: The prompt.
-- `callback_url`: The URL to which the result needs to be returned.
+- `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`.
+- `action`: the action for this video generation task, mainly including three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`).
+- `image_urls`: when selecting the image to video action `image2video`, it is necessary to upload the reference image links for the first and last frames, with a maximum of three reference images.
+- `prompt`: the prompt.
+- `callback_url`: the URL to receive the callback result.
 
 #### 📌 Model Summary
 
 | **Model Name**                   | **Supported Modes**                          | **Image Input Rules**                        |
 | -------------------------- | --------------------------------- | --------------------------------- |
 | **veo2-fast**              | Text to video (no image)<br>Image to video mode (with image)           | Only supports **1 image** → First frame mode                |
-| **veo3-fast**              | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
-| **veo31-fast**             | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo3-fast**              | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo31-fast**             | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
 | **veo31-fast-ingredients** | ❌ Text to video (not supported)<br>✅ **Forced multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
-| **veo2**                   | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
-| **veo3**                   | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
-| **veo31**                  | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo2**                   | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo3**                   | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo31**                  | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
 
 ---
 
@@ -56,7 +56,7 @@ Additionally, the Request Body is set, including:
 
 1. **General Logic**:
    - **No image input** → Automatically triggers text to video mode.
-   - **Image input present** → Triggers image to video mode (specific behavior determined by the number of images).
+   - **Image input** → Triggers image to video mode (specific behavior determined by the number of images).
 2. **Image to Video Mode Types**:
    - **First frame mode** (1 image): The first frame is fixed as the input image.
    - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
@@ -69,16 +69,15 @@ Additionally, the Request Body is set, including:
 
 #### ⚠️ Notes
 
-- **The only model that requires image input**: `veo31-fast-ingredients` must provide images (1-3 images), otherwise it cannot run.
-- **Image Quantity Limit**:
-  - Except for `veo31-fast-ingredients`, other models support a maximum of **2 images** input.
-  - `veo2-fast` only supports **1 image** (other Fast models support 1-2 images).
+- **The only model that requires image input**: `veo31-fast-ingredients` must have images provided (1-3 images), otherwise it cannot run.
+- **Image quantity limit**:
+  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** as input.
 
 After selection, you can find that the corresponding code is also generated on the right side, as shown in the image:
 
 <p><img src="https://cdn.acedata.cloud/pmwh4y.png" width="500" class="m-auto"></p>
 
-Click the "Try" button to test, as shown in the image above, and we obtained the following result:
+Click the "Try" button to conduct a test, as shown in the image above, and we obtained the following result:
 
 ```json
 {
@@ -98,16 +97,16 @@ Click the "Try" button to test, as shown in the image above, and we obtained the
 ```
 
 The returned result contains multiple fields, described as follows:
-- `success`, the status of the video generation task at this time.
-- `task_id`, the ID of the video generation task at this time.
-- `data`, the result of the video generation task at this time.
-  - `id`, the video ID of the video generation task at this time.
-  - `video_url`, the video link of the video generation task at this time.
-  - `created_at`, the creation time of the video generation task at this time.
-  - `complete_at`, the completion time of the video generation task at this time.
-  - `state`, the status of the video generation task at this time.
 
-We can see that we have obtained satisfactory video information, and we only need to obtain the generated Veo video based on the video link address in the `data` result.
+- `success`: the status of the video generation task at this time.
+- `task_id`: the ID of the video generation task at this time.
+- `data`: the result of the video generation task at this time.
+  - `id`: the video ID of the video generation task at this time.
+  - `video_url`: the video link of the video generation task at this time.
+  - `created_at`: the creation time of the video generation task at this time.
+  - `complete_at`: the completion time of the video generation task at this time.
+  - `state`: the status of the video generation task at this time.
+We can see that we have obtained satisfactory video information, and we only need to obtain the generated Veo video based on the video link address in the `data` of the result.
 
 Additionally, if you want to generate the corresponding integration code, you can directly copy the generated code, for example, the CURL code is as follows:
 
