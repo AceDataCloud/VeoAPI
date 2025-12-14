@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-Upon successful request, the API will return the detailed information of the video task here. For example:
+After a successful request, the API will return the detailed information of the video task here. For example:
 
 ```json
 {
@@ -154,7 +154,7 @@ Some code examples are as follows:
 
 ### Response Example
 
-Upon successful request, the API will return the specific details of all batch video tasks this time. For example:
+After a successful request, the API will return the specific details of all batch video tasks this time. For example:
 ```json
 {
   "items": [
@@ -169,7 +169,7 @@ Upon successful request, the API will return the specific details of all batch v
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
         "model": "veo2",
-        "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
+        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手上。"
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
       "type": "videos",
@@ -200,7 +200,7 @@ Upon successful request, the API will return the specific details of all batch v
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
         "model": "veo2",
-        "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
+        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手上。"
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
       "type": "videos",
@@ -225,10 +225,10 @@ Upon successful request, the API will return the specific details of all batch v
 }
 ```
 
-The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and each video's specific information is the same as the fields mentioned above.
+返回结果一共有多个字段，其中items是包含了批量视频任务的具体详情信息，每个视频任务的具体信息与上文的字段一样，字段信息如下。
 
-- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the return result of querying a single task above.
-- `count`, the number of video tasks in this batch query.
+- `items`，批量视频任务的所有具体详情信息。它是一个数组，每个数组的元素和上文查询单个任务的返回结果格式是一样的。
+- `count`，此处批量查询视频任务的个数。
 
 #### CURL
 
@@ -243,17 +243,17 @@ curl -X POST 'https://api.acedata.cloud/veo/tasks' \
 }'
 ```
 
-## Error Handling
+## 错误处理
 
-When calling the API, if an error occurs, the API will return the corresponding error code and message. For example:
+在调用 API 时，如果遇到错误，API 会返回相应的错误代码和信息。例如：
 
-- `400 token_mismatched`: Bad request, possibly due to missing or invalid parameters.
-- `400 api_not_implemented`: Bad request, possibly due to missing or invalid parameters.
-- `401 invalid_token`: Unauthorized, invalid or missing authorization token.
-- `429 too_many_requests`: Too many requests, you have exceeded the rate limit.
-- `500 api_error`: Internal server error, something went wrong on the server.
+- `400 token_mismatched`：错误请求，可能是由于缺少或无效的参数。
+- `400 api_not_implemented`：错误请求，可能是由于缺少或无效的参数。
+- `401 invalid_token`：未授权，授权令牌无效或缺失。
+- `429 too_many_requests`：请求过多，您已超出速率限制。
+- `500 api_error`：内部服务器错误，服务器出现问题。
 
-### Error Response Example
+### 错误响应示例
 
 ```json
 {
@@ -266,6 +266,6 @@ When calling the API, if an error occurs, the API will return the corresponding 
 }
 ```
 
-## Conclusion
+## 结论
 
-Through this document, you have learned how to use the Veo Tasks API to query the specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+通过本文档，您已经了解了如何使用 Veo Tasks API 进行查询单个或批量视频任务的所有具体详情信息。希望本文档能帮助您更好地对接和使用该 API。如有任何问题，请随时联系我们的技术支持团队。
