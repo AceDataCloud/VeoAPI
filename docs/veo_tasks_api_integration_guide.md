@@ -6,17 +6,17 @@ This document will provide detailed integration instructions for the Veo Tasks A
 
 ## Application Process
 
-To use the Veo Tasks API, you first need to apply for the corresponding service on the application page [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f), and then copy the task ID from the Veo Videos Generation API, as shown in the image below:
+To use the Veo Tasks API, you first need to apply for the corresponding service on the application page [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f), and then copy the task ID from the Veo Videos Generation API, as shown in the image:
 
 <p><img src="https://cdn.acedata.cloud/txlg6g.png" width="500" class="m-auto"></p>
 
-Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) to apply for the corresponding service. After entering the page, click the "Acquire" button, as shown in the image below:
+Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) to apply for the corresponding service. After entering the page, click the "Acquire" button, as shown in the image:
 
 ![Application Page](https://cdn.acedata.cloud/rci31i.png)
 
 If you are not logged in or registered, you will be automatically redirected to the [login page](https://platform.acedata.cloud) inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
 
-There is a free quota available for first-time applicants, allowing you to use this API for free.
+There will be a free quota offered for the first application, allowing you to use this API for free.
 
 ## Request Example
 
@@ -32,7 +32,7 @@ We will take one task ID returned by the Veo Videos Generation API as an example
 
 **Request Headers** include:
 
-- `accept`: Specifies that the response should be in JSON format, set to `application/json`.
+- `accept`: Specifies that the response result should be in JSON format, set to `application/json`.
 - `authorization`: The key to call the API, which can be selected directly after application.
 
 **Request Body** includes:
@@ -46,7 +46,7 @@ Set as shown in the image below:
 
 ### Code Example
 
-You can see that various language codes have been automatically generated on the right side of the page, as shown in the image below:
+You can see that various language codes have been automatically generated on the right side of the page, as shown in the image:
 
 <p><img src="https://cdn.acedata.cloud/bsqh3i.png" width="500" class="m-auto"></p>
 
@@ -146,7 +146,7 @@ Set as shown in the image below:
 
 ### Code Example
 
-You can see that various language codes have been automatically generated on the right side of the page, as shown in the image below:
+You can see that various language codes have been automatically generated on the right side of the page, as shown in the image:
 
 <p><img src="https://cdn.acedata.cloud/g3b7g6.png" width="500" class="m-auto"></p>
 
@@ -169,7 +169,7 @@ After a successful request, the API will return the specific details of all batc
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
         "model": "veo2",
-        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手上。"
+        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手处。"
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
       "type": "videos",
@@ -200,7 +200,7 @@ After a successful request, the API will return the specific details of all batc
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
         "model": "veo2",
-        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手上。"
+        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手处。"
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
       "type": "videos",
@@ -260,7 +260,7 @@ curl -X POST 'https://api.acedata.cloud/veo/tasks' \
   "success": false,
   "error": {
     "code": "api_error",
-    "message": "fetch failed"
+    "message": "获取失败"
   },
   "trace_id": "2cf86e86-22a4-46e1-ac2f-032c0f2a4e89"
 }
