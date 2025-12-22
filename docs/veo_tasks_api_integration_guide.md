@@ -16,7 +16,7 @@ Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud
 
 If you are not logged in or registered, you will be automatically redirected to the [login page](https://platform.acedata.cloud) inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
 
-There will be a free quota offered for the first application, allowing you to use this API for free.
+There is a free quota available for first-time applicants, allowing you to use this API for free.
 
 ## Request Example
 
@@ -32,7 +32,7 @@ We will take one task ID returned by the Veo Videos Generation API as an example
 
 **Request Headers** include:
 
-- `accept`: Specifies that the response result should be in JSON format, set to `application/json`.
+- `accept`: Specifies that the response should be in JSON format, set to `application/json`.
 - `authorization`: The key to call the API, which can be selected directly after application.
 
 **Request Body** includes:
@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-After a successful request, the API will return the detailed information of the video task here. For example:
+Upon successful request, the API will return the details of the video task here. For example:
 
 ```json
 {
@@ -128,12 +128,12 @@ After a successful request, the API will return the detailed information of the 
 The returned result contains multiple fields, with the request field being the request body when the task was initiated, and the response field being the response body returned after the task is completed. The field descriptions are as follows.
 
 - `id`: The ID of the video task generated, used to uniquely identify this video generation task.
-- `request`: The request information in the video task.
-- `response`: The return information in the video task.
+- `request`: The request information in the video task query.
+- `response`: The return information in the video task query.
 
 ## Batch Query Operation
 
-This is for querying the details of video tasks for multiple task IDs. Unlike the above, the action needs to be selected as retrieve_batch.
+This is for querying the details of video tasks for multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
 
 **Request Body** includes:
 
@@ -154,7 +154,7 @@ Some code examples are as follows:
 
 ### Response Example
 
-After a successful request, the API will return the specific details of all batch video tasks this time. For example:
+Upon successful request, the API will return the specific details of all batch video tasks this time. For example:
 ```json
 {
   "items": [
@@ -169,7 +169,7 @@ After a successful request, the API will return the specific details of all batc
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
         "model": "veo2",
-        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手处。"
+        "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
       "type": "videos",
@@ -200,7 +200,7 @@ After a successful request, the API will return the specific details of all batc
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
         "model": "veo2",
-        "prompt": "白色陶瓷咖啡杯在光滑的大理石台面上，晨光透过窗户照射。相机缓慢地围绕咖啡杯旋转360度，短暂停留在把手处。"
+        "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
       "type": "videos",
@@ -225,10 +225,10 @@ After a successful request, the API will return the specific details of all batc
 }
 ```
 
-返回结果一共有多个字段，其中items是包含了批量视频任务的具体详情信息，每个视频任务的具体信息与上文的字段一样，字段信息如下。
+The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and each video's specific information is the same as the fields mentioned above.
 
-- `items`，批量视频任务的所有具体详情信息。它是一个数组，每个数组的元素和上文查询单个任务的返回结果格式是一样的。
-- `count`，此处批量查询视频任务的个数。
+- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the result of querying a single task above.
+- `count`, the number of video tasks in this batch query.
 
 #### CURL
 
@@ -243,29 +243,29 @@ curl -X POST 'https://api.acedata.cloud/veo/tasks' \
 }'
 ```
 
-## 错误处理
+## Error Handling
 
-在调用 API 时，如果遇到错误，API 会返回相应的错误代码和信息。例如：
+When calling the API, if an error occurs, the API will return the corresponding error code and message. For example:
 
-- `400 token_mismatched`：错误请求，可能是由于缺少或无效的参数。
-- `400 api_not_implemented`：错误请求，可能是由于缺少或无效的参数。
-- `401 invalid_token`：未授权，授权令牌无效或缺失。
-- `429 too_many_requests`：请求过多，您已超出速率限制。
-- `500 api_error`：内部服务器错误，服务器出现问题。
+- `400 token_mismatched`: Bad request, possibly due to missing or invalid parameters.
+- `400 api_not_implemented`: Bad request, possibly due to missing or invalid parameters.
+- `401 invalid_token`: Unauthorized, invalid or missing authorization token.
+- `429 too_many_requests`: Too many requests, you have exceeded the rate limit.
+- `500 api_error`: Internal server error, something went wrong on the server.
 
-### 错误响应示例
+### Error Response Example
 
 ```json
 {
   "success": false,
   "error": {
     "code": "api_error",
-    "message": "获取失败"
+    "message": "fetch failed"
   },
   "trace_id": "2cf86e86-22a4-46e1-ac2f-032c0f2a4e89"
 }
 ```
 
-## 结论
+## Conclusion
 
-通过本文档，您已经了解了如何使用 Veo Tasks API 进行查询单个或批量视频任务的所有具体详情信息。希望本文档能帮助您更好地对接和使用该 API。如有任何问题，请随时联系我们的技术支持团队。
+Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
