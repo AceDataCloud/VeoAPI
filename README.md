@@ -34,7 +34,7 @@ Additionally, the Request Body is set, including:
 
 - `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models.
 - `action`: the action for this video generation task, mainly including three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`).
-- `image_urls`: when selecting the image to video action `image2video`, it is necessary to upload the reference image links for the first and last frames, with a maximum of three reference images.
+- `image_urls`: when selecting the image to video action `image2video`, you must upload the reference image links for the first and last frames, with a maximum of three reference images.
 - `prompt`: the prompt.
 - `callback_url`: the URL to receive the callback result.
 
@@ -56,7 +56,7 @@ Additionally, the Request Body is set, including:
 
 1. **General Logic**:
    - **No image input** → Automatically triggers text to video mode.
-   - **Image input** → Triggers image to video mode (specific behavior determined by the number of images).
+   - **Image input present** → Triggers image to video mode (specific behavior determined by the number of images).
 2. **Image to Video Mode Types**:
    - **First frame mode** (1 image): The first frame is fixed as the input image.
    - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
@@ -77,7 +77,7 @@ After selection, you can find that the corresponding code is also generated on t
 
 <p><img src="https://cdn.acedata.cloud/pmwh4y.png" width="500" class="m-auto"></p>
 
-Click the "Try" button to conduct a test, as shown in the image above, where we obtained the following result:
+Click the "Try" button to conduct a test, as shown in the image above, and we obtained the following result:
 
 ```json
 {
@@ -98,14 +98,14 @@ Click the "Try" button to conduct a test, as shown in the image above, where we 
 
 The returned result contains multiple fields, described as follows:
 
-- `success`: the status of the video generation task at this time.
-- `task_id`: the ID of the video generation task at this time.
-- `data`: the result of the video generation task at this time.
-  - `id`: the video ID of the video generation task at this time.
-  - `video_url`: the video link of the video generation task at this time.
-  - `created_at`: the creation time of the video generation task at this time.
-  - `complete_at`: the completion time of the video generation task at this time.
-  - `state`: the status of the video generation task at this time.
+- `success`, the status of the video generation task at this time.
+- `task_id`, the ID of the video generation task at this time.
+- `data`, the result of the video generation task at this time.
+  - `id`, the video ID of the video generation task at this time.
+  - `video_url`, the video link of the video generation task at this time.
+  - `created_at`, the creation time of the video generation task at this time.
+  - `complete_at`, the completion time of the video generation task at this time.
+  - `state`, the status of the video generation task at this time.
 We can see that we have obtained satisfactory video information, and we only need to obtain the generated Veo video based on the video link address in the `data` of the result.
 
 Additionally, if you want to generate the corresponding integration code, you can directly copy the generated code, for example, the CURL code is as follows:
