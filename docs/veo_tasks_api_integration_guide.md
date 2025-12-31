@@ -22,7 +22,7 @@ There is a free quota available for first-time applicants, allowing you to use t
 
 The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the document [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f).
 
-We will take one task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
+We will take a task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
 
 ### Task Example Image
 
@@ -129,11 +129,11 @@ The returned result contains multiple fields, with the request field being the r
 
 - `id`: The ID of the video task generated, used to uniquely identify this video generation task.
 - `request`: The request information in the video task.
-- `response`: The return information in the video task.
+- `response`: The response information in the video task.
 
 ## Batch Query Operation
 
-This is for querying the details of video tasks for multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
+This is for querying the details of multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
 
 **Request Body** includes:
 
@@ -225,9 +225,9 @@ Upon successful request, the API will return the specific details of all batch v
 }
 ```
 
-The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and each video's specific information is the same as the fields mentioned above.
+The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and each video's specific information is the same as the fields in the previous single task query.
 
-- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the result of querying a single task above.
+- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the previous single task return result.
 - `count`, the number of video tasks in this batch query.
 
 #### CURL
@@ -268,4 +268,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
