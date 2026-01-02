@@ -310,7 +310,7 @@ The content is as follows:
 }
 ```
 
-It can be seen that the result contains a `task_id` field, and the other fields are similar to the above, allowing the task to be associated through this field.
+It can be seen that the result contains a `task_id` field, and the other fields are similar to the above text, allowing the task to be associated through this field.
 
 ## Error Handling
 
@@ -337,4 +337,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and reference images for the first frame. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and a reference image for the first frame. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
