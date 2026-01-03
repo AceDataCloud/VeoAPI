@@ -49,7 +49,7 @@ Additionally, the Request Body is set, including:
 
 1. **General Logic**:
    - **No image input** → Automatically triggers text-to-video mode.
-   - **Image input present** → Triggers image-to-video mode (specific behavior determined by the number of images).
+   - **Image input** → Triggers image-to-video mode (specific behavior determined by the number of images).
 2. **Image-to-video Mode Types**:
    - **First frame mode** (1 image): The first frame is fixed as the input image.
    - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
@@ -62,7 +62,7 @@ Additionally, the Request Body is set, including:
 
 ### ⚠️ Notes
 
-- **The only model that requires image input**: `veo31-fast-ingredients` must have images provided (1-3 images), otherwise it cannot run.
+- **The only model that requires image input**: `veo31-fast-ingredients` must provide images (1-3 images), otherwise it cannot run.
 - **Image quantity limit**:
   - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** as input.
 
@@ -337,4 +337,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and a reference image for the first frame. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and reference images for the first frame. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
