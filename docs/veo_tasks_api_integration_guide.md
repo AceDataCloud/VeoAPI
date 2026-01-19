@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-Upon successful request, the API will return the detailed information of the video task here. For example:
+Upon successful request, the API will return the details of the video task here. For example:
 
 ```json
 {
@@ -128,12 +128,12 @@ Upon successful request, the API will return the detailed information of the vid
 The returned result contains multiple fields, with the request field being the request body when the task was initiated, and the response field being the response body returned after the task is completed. The field descriptions are as follows.
 
 - `id`: The ID of the video task generated, used to uniquely identify this video generation task.
-- `request`: The request information in the video task.
-- `response`: The return information in the video task.
+- `request`: The request information in the video task query.
+- `response`: The return information in the video task query.
 
 ## Batch Query Operation
 
-This is for querying the details of multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
+This is for querying the details of video tasks for multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
 
 **Request Body** includes:
 
@@ -268,4 +268,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
