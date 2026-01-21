@@ -128,8 +128,8 @@ Upon successful request, the API will return the details of the video task here.
 The returned result contains multiple fields, with the request field being the request body when the task was initiated, and the response field being the response body returned after the task is completed. The field descriptions are as follows.
 
 - `id`: The ID of the video task generated, used to uniquely identify this video generation task.
-- `request`: The request information in the video task query.
-- `response`: The return information in the video task query.
+- `request`: The request information in the video task.
+- `response`: The return information in the video task.
 
 ## Batch Query Operation
 
@@ -227,7 +227,7 @@ Upon successful request, the API will return the specific details of all batch v
 
 The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and each video's specific information is the same as the fields mentioned above.
 
-- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the result of querying a single task above.
+- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the return result of querying a single task above.
 - `count`, the number of video tasks in this batch query.
 
 #### CURL
@@ -268,4 +268,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
