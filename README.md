@@ -11,7 +11,7 @@ This article will introduce the integration instructions for the Veo Videos Gene
 
 ### Application Process
 
-To use the API, you need to first apply for the corresponding service on the [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f) page. After entering the page, click the "Acquire" button, as shown in the image below:
+To use the API, you need to first apply for the corresponding service on the [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f) page. After entering the page, click the "Acquire" button, as shown in the image:
 
 ![](https://cdn.acedata.cloud/q6ytrc.png)
 
@@ -21,7 +21,7 @@ There will be a free quota granted upon your first application, allowing you to 
 
 ### Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models, as detailed below:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value `text2video`. It mainly includes three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models, as detailed below:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
@@ -34,7 +34,7 @@ Additionally, the Request Body is set, including:
 
 - `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models.
 - `action`: the action for this video generation task, mainly including three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`).
-- `image_urls`: when selecting the image to video action `image2video`, it is necessary to upload the reference image links for the first and last frames, with a maximum of three reference images.
+- `image_urls`: when selecting the image to video action `image2video`, you must upload the reference image links for the first and last frames, with a maximum of three reference images.
 - `prompt`: the prompt.
 - `callback_url`: the URL to receive the callback result.
 
@@ -56,7 +56,7 @@ Additionally, the Request Body is set, including:
 
 1. **General Logic**:
    - **No image input** → Automatically triggers text to video mode.
-   - **Image input present** → Triggers image to video mode (specific behavior determined by the number of images).
+   - **Image input** → Triggers image to video mode (specific behavior determined by the number of images).
 2. **Image to Video Mode Types**:
    - **First frame mode** (1 image): The first frame is fixed as the input image.
    - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
@@ -71,9 +71,9 @@ Additionally, the Request Body is set, including:
 
 - **The only model that requires image input**: `veo31-fast-ingredients` must have images provided (1-3 images), otherwise it cannot run.
 - **Image quantity limit**:
-  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** as input.
+  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** input.
 
-After selection, you can see that the corresponding code is also generated on the right side, as shown in the image below:
+After selection, you can find that the corresponding code is also generated on the right side, as shown in the image:
 
 <p><img src="https://cdn.acedata.cloud/pmwh4y.png" width="500" class="m-auto"></p>
 
