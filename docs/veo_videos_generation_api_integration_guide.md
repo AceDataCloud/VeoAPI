@@ -14,7 +14,7 @@ There will be a free quota granted upon your first application, allowing you to 
 
 ## Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`, with specific content as follows:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. This mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`, with specific content as follows:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
@@ -27,7 +27,7 @@ Additionally, the Request Body is set, including:
 
 - `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`.
 - `action`: the action for this video generation task, mainly including three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`).
-- `image_urls`: when selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames, with a maximum of three reference images.
+- `image_urls`: when selecting the image-to-video action `image2video`, it is necessary to upload the reference image links for the first and last frames, with a maximum of three reference images.
 - `prompt`: the prompt.
 - `callback_url`: the URL to receive the callback result.
 
@@ -53,7 +53,7 @@ Additionally, the Request Body is set, including:
 2. **Image-to-video Mode Types**:
    - **First frame mode** (1 image): The first frame is fixed as the input image.
    - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
-   - **Multi-image fusion mode** (1-3 images): Only `veo31-fast-ingredients` supports this, fusing multiple images to generate a video.
+   - **Multi-image fusion mode** (1-3 images): Only supported by `veo31-fast-ingredients`, fuses multiple images to generate a video.
 3. **Mode Classification**:
    - **Fast Mode**: `veo2-fast`, `veo3-fast`, `veo31-fast`, `veo31-fast-ingredients`.
    - **Quality Mode**: `veo2`, `veo3`, `veo31` (higher generation quality).
@@ -62,9 +62,9 @@ Additionally, the Request Body is set, including:
 
 ### ⚠️ Notes
 
-- **The only model that requires image input**: `veo31-fast-ingredients` must have images provided (1-3 images), otherwise it cannot run.
+- **The only model that requires image input**: `veo31-fast-ingredients` must provide images (1-3 images), otherwise it cannot run.
 - **Image quantity limit**:
-  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** as input.
+  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** input.
 
 After selection, you can find that the corresponding code is also generated on the right side, as shown in the image below:
 
@@ -117,12 +117,12 @@ curl -X POST 'https://api.acedata.cloud/veo/videos' \
 
 ## Image to Video Function
 
-If you want to generate a video based on the first and last frame images, you can set the parameter `action` to `image2video` and input the array of first and last frame image links `image_urls`.
+If you want to generate a video based on the first and last frame images, you can set the parameter `action` to `image2video`, and input the array of first and last frame image links `image_urls`.
 
 Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
 
 - `model`: The model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `image_urls`: When selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
+- `image_urls`: When choosing the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
 - `prompt`: Prompt words.
 
 The sample input is as follows:
@@ -180,7 +180,7 @@ It can be seen that the result content is consistent with the above text, thus a
 
 ## Get 1080p Video Function
 
-If you want to get 1080p for an already generated Veo video, you can set the parameter `action` to `get1080p` and input the ID of the video you want to get 1080p for. The video ID can be obtained based on basic usage, as shown in the figure below:
+If you want to get 1080p for an already generated Veo video, you can set the parameter `action` to `get1080p`, and input the ID of the video you want to get 1080p for. The video ID can be obtained based on basic usage, as shown in the figure below:
 
 <p><img src="https://cdn.acedata.cloud/hacabc.png" width="500" class="m-auto"></p>
 
@@ -224,7 +224,7 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining the 1080p video.
+It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining a 1080p video.
 
 ## Specify Video Size Generation
 
