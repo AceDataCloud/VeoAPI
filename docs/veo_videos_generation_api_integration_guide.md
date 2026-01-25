@@ -14,7 +14,7 @@ There will be a free quota granted upon your first application, allowing you to 
 
 ## Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. This mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`, with specific content as follows:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`, with specific content as follows:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
@@ -38,7 +38,7 @@ Additionally, the Request Body is set, including:
 | **veo2-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | Only supports **1 image** → First frame mode                |
 | **veo3-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
 | **veo31-fast**             | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo31-fast-ingredients** | ❌ Text-to-video (not supported)<br>✅ **Forced multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
+| **veo31-fast-ingredients** | ❌ Text-to-video (not supported)<br>✅ **Mandatory multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
 | **veo2**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
 | **veo3**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
 | **veo31**                  | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
@@ -70,7 +70,7 @@ After selection, you can find that the corresponding code is also generated on t
 
 <p><img src="https://cdn.acedata.cloud/pmwh4y.png" width="500" class="m-auto"></p>
 
-Click the "Try" button to conduct a test, as shown in the image above, and we obtained the following result:
+Click the "Try" button to conduct a test, as shown in the image above, where we obtained the following result:
 
 ```json
 {
@@ -117,12 +117,12 @@ curl -X POST 'https://api.acedata.cloud/veo/videos' \
 
 ## Image to Video Function
 
-If you want to generate a video based on the first and last frame images, you can set the parameter `action` to `image2video`, and input the array of first and last frame image links `image_urls`.
+If you want to generate a video based on the first and last frame images, you can set the parameter `action` to `image2video` and input the array of first and last frame image links `image_urls`.
 
 Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
 
 - `model`: The model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `image_urls`: When choosing the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
+- `image_urls`: When selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
 - `prompt`: Prompt words.
 
 The sample input is as follows:
@@ -180,11 +180,11 @@ It can be seen that the result content is consistent with the above text, thus a
 
 ## Get 1080p Video Function
 
-If you want to get 1080p for an already generated Veo video, you can set the parameter `action` to `get1080p`, and input the ID of the video you want to get 1080p for. The video ID can be obtained based on basic usage, as shown in the figure below:
+If you want to get 1080p for an already generated Veo video, you can set the parameter `action` to `get1080p` and input the ID of the video you want to get 1080p for. The video ID can be obtained based on basic usage, as shown in the figure below:
 
 <p><img src="https://cdn.acedata.cloud/hacabc.png" width="500" class="m-auto"></p>
 
-At this time, you can see that the video ID is:
+At this point, you can see that the video ID is:
 
 ```json
 "id": "59f12222b1fa4fbe9331ff2400ad1583"
@@ -267,7 +267,7 @@ Due to the relatively long generation time of the Veo Videos Generation API, whi
 
 The overall process is as follows: when the client initiates a request, an additional `callback_url` field is specified. After the client makes the API request, the API will immediately return a result containing a `task_id` field, representing the current task ID. When the task is completed, the result of the generated video will be sent to the client-specified `callback_url` in the form of a POST JSON, which also includes the `task_id` field, allowing the task result to be associated by ID.
 
-Let's understand how to operate specifically through an example.
+Let’s understand how to operate specifically through an example.
 
 First, the Webhook callback is a service that can receive HTTP requests, and developers should replace it with the URL of their own HTTP server. For demonstration purposes, we use a public Webhook sample site https://webhook.site/, where you can open the site to get a Webhook URL, as shown in the image:
 
@@ -279,7 +279,7 @@ Next, we can set the `callback_url` field to the above Webhook URL and fill in t
 
 <p><img src="https://cdn.acedata.cloud/rgivs2.png" width="500" class="m-auto"></p>
 
-Clicking run, you will immediately receive a result as follows:
+Clicking run, you will immediately receive a result, as follows:
 
 ```json
 {
@@ -310,7 +310,7 @@ The content is as follows:
 }
 ```
 
-It can be seen that the result contains a `task_id` field, and the other fields are similar to the above text, allowing the task to be associated through this field.
+It can be seen that the result contains a `task_id` field, and the other fields are similar to the above, allowing the task to be associated through this field.
 
 ## Error Handling
 
@@ -337,4 +337,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and a reference image for the first frame. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and reference images for the first frame. We hope this document helps you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
