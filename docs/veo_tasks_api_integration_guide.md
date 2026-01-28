@@ -22,7 +22,7 @@ There is a free quota available for first-time applicants, allowing you to use t
 
 The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the document [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f).
 
-We will take a task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, we will demonstrate how to pass in a task ID.
+We will take an example of a task ID returned by the Veo Videos Generation API service to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
 
 ### Task Example Image
 
@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-Upon a successful request, the API will return the detailed information of the video task here. For example:
+Upon successful request, the API will return the detailed information of the video task here. For example:
 
 ```json
 {
@@ -154,7 +154,7 @@ Some code examples are as follows:
 
 ### Response Example
 
-Upon a successful request, the API will return the specific details of all batch video tasks this time. For example:
+Upon successful request, the API will return the specific details of all batch video tasks this time. For example:
 ```json
 {
   "items": [
