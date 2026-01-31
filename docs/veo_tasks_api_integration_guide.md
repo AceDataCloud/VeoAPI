@@ -14,7 +14,7 @@ Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud
 
 ![Application Page](https://cdn.acedata.cloud/rci31i.png)
 
-If you are not logged in or registered, you will be automatically redirected to the [login page](https://platform.acedata.cloud) inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
+If you have not logged in or registered, you will be automatically redirected to the [login page](https://platform.acedata.cloud) inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
 
 There is a free quota available for first-time applicants, allowing you to use this API for free.
 
@@ -22,7 +22,7 @@ There is a free quota available for first-time applicants, allowing you to use t
 
 The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the document [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f).
 
-We will take an example of a task ID returned by the Veo Videos Generation API service to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
+We will take one task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
 
 ### Task Example Image
 
@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-Upon successful request, the API will return the detailed information of the video task here. For example:
+Upon successful request, the API will return the details of the video task here. For example:
 
 ```json
 {
@@ -133,7 +133,7 @@ The returned result contains multiple fields, with the request field being the r
 
 ## Batch Query Operation
 
-This is for querying the details of multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
+This is for querying the details of video tasks for multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
 
 **Request Body** includes:
 
