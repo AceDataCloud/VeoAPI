@@ -14,7 +14,7 @@ There will be a free quota granted upon your first application, allowing you to 
 
 ## Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value `text2video`. It mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently mainly includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models, as detailed below:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`. The specific content is as follows:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
@@ -25,10 +25,10 @@ Here we can see that we have set the Request Headers, including:
 
 Additionally, the Request Body is set, including:
 
-- `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models.
-- `action`: the action for this video generation task, mainly including three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`).
-- `image_urls`: when selecting the image-to-video action `image2video`, it is necessary to upload the reference image links for the first and last frames, with a maximum of three reference images.
-- `resolution`: choose the resolution of the generated video, where the veo31 model supports 4k resolution, while other models do not. All models support 1080p and gif resolutions. If this value is not provided, the default resolution is 720p, mainly divided into: `1080p`, `gif`, `4k`.
+- `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`.
+- `action`: the action for this video generation task, mainly including three actions: text to video (`text2video`), image to video (`image2video`), and get 1080p video (`get1080p`).
+- `image_urls`: when selecting the image to video action `image2video`, you must upload the reference image links for the first and last frames, with a maximum of three reference images.
+- `resolution`: choose the resolution of the generated video, where the veo31 model supports 4k resolution, while other models do not. All models support 1080p and gif resolutions. If this value is not provided, the default is 720p resolution, mainly divided into: `1080p`, `gif`, `4k`.
 - `prompt`: the prompt.
 - `callback_url`: the URL to receive the callback result.
 
@@ -36,22 +36,22 @@ Additionally, the Request Body is set, including:
 
 | **Model Name**                   | **Supported Modes**                          | **Image Input Rules**                        |
 | -------------------------- | --------------------------------- | --------------------------------- |
-| **veo2-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | Only supports **1 image** → First frame mode                |
-| **veo3-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo31-fast**             | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo31-fast-ingredients** | ❌ Text-to-video (not supported)<br>✅ **Forced multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
-| **veo2**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo3**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo31**                  | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo2-fast**              | Text to video (no image)<br>Image to video mode (with image)           | Only supports **1 image** → First frame mode                |
+| **veo3-fast**              | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo31-fast**             | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo31-fast-ingredients** | ❌ Text to video (not supported)<br>✅ **Forced multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
+| **veo2**                   | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo3**                   | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo31**                  | Text to video (no image)<br>Image to video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
 
 ---
 
 ### 🔑 Key Rules Explanation
 
 1. **General Logic**:
-   - **No image input** → Automatically triggers text-to-video mode.
-   - **Image input present** → Triggers image-to-video mode (specific behavior determined by the number of images).
-2. **Image-to-video Mode Types**:
+   - **No image input** → Automatically triggers text to video mode.
+   - **Image input present** → Triggers image to video mode (specific behavior determined by the number of images).
+2. **Image to Video Mode Types**:
    - **First frame mode** (1 image): The first frame is fixed as the input image.
    - **First and last frame mode** (2 images): The first and last frames are fixed as the input images.
    - **Multi-image fusion mode** (1-3 images): Only supported by `veo31-fast-ingredients`, fuses multiple images to generate a video.
@@ -123,7 +123,7 @@ If you want to generate a video based on the first and last frame images, you ca
 Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
 
 - `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `image_urls`: when selecting the image to video action `image2video`, you must upload the reference image links for the first and last frames.
+- `image_urls`: when selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
 - `prompt`: prompt words.
 
 An example of filling in is as follows:
@@ -177,7 +177,7 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above text, thus achieving the image to video function.
+It can be seen that the result content is consistent with the above text, thus achieving the image-to-video function.
 
 ## Get 1080p Video Function
 
@@ -225,7 +225,7 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining the 1080p video.
+It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining a 1080p video.
 
 ## Specify Video Size Generation
 
@@ -260,11 +260,11 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above text, which also achieves the function of generating videos of specified dimensions.
+It can be seen that the result content is consistent with the above text, which also achieves the function of generating videos with specified dimensions.
 
 ## Asynchronous Callback
 
-Due to the relatively long time required for the Veo Videos Generation API to generate, approximately 1-2 minutes, if the API does not respond for a long time, the HTTP request will keep the connection open, leading to additional system resource consumption. Therefore, this API also provides support for asynchronous callbacks.
+Since the time taken by the Veo Videos Generation API is relatively long, approximately 1-2 minutes, if the API does not respond for a long time, the HTTP request will keep the connection open, leading to additional system resource consumption. Therefore, this API also provides support for asynchronous callbacks.
 
 The overall process is: when the client initiates a request, an additional `callback_url` field is specified. After the client initiates the API request, the API will immediately return a result containing a `task_id` field, representing the current task ID. When the task is completed, the result of the generated video will be sent to the client-specified `callback_url` in the form of a POST JSON, which also includes the `task_id` field, allowing the task result to be associated by ID.
 
@@ -311,7 +311,7 @@ The content is as follows:
 }
 ```
 
-It can be seen that there is a `task_id` field in the result, and other fields are similar to the above text. The task can be associated through this field.
+It can be seen that the result contains a `task_id` field, and the other fields are similar to the above text, allowing the task to be associated through this field.
 
 ## Error Handling
 
