@@ -1,6 +1,6 @@
 # Veo Video Generation API
 
-Veo AI video generation service creates beautiful videos through prompts and starting images.
+Veo AI video generation service with text and image input.
 
 API home page: [Ace Data Cloud - Veo Video Generation](https://platform.acedata.cloud/services/73cd74ba-a1bd-4a12-8df6-11d64c38df14)
 
