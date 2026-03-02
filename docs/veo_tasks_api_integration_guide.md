@@ -6,11 +6,11 @@ This document will provide detailed integration instructions for the Veo Tasks A
 
 ## Application Process
 
-To use the Veo Tasks API, you first need to apply for the corresponding service on the application page [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f), and then copy the task ID from the Veo Videos Generation API, as shown in the image:
+To use the Veo Tasks API, you first need to apply for the corresponding service on the application page [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f), and then copy the task ID from the Veo Videos Generation API, as shown in the image below:
 
 <p><img src="https://cdn.acedata.cloud/txlg6g.png" width="500" class="m-auto"></p>
 
-Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) to apply for the corresponding service. After entering the page, click the "Acquire" button, as shown in the image:
+Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) to apply for the corresponding service. After entering the page, click the "Acquire" button, as shown in the image below:
 
 ![Application Page](https://cdn.acedata.cloud/rci31i.png)
 
@@ -46,7 +46,7 @@ Set as shown in the image below:
 
 ### Code Example
 
-You can see that various language codes have been automatically generated on the right side of the page, as shown in the image:
+You can see that various language codes have been automatically generated on the right side of the page, as shown in the image below:
 
 <p><img src="https://cdn.acedata.cloud/bsqh3i.png" width="500" class="m-auto"></p>
 
@@ -89,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-Upon a successful request, the API will return the details of the video task here. For example:
+Upon successful request, the API will return the details of the video task here. For example:
 
 ```json
 {
@@ -146,7 +146,7 @@ Set as shown in the image below:
 
 ### Code Example
 
-You can see that various language codes have been automatically generated on the right side of the page, as shown in the image:
+You can see that various language codes have been automatically generated on the right side of the page, as shown in the image below:
 
 <p><img src="https://cdn.acedata.cloud/g3b7g6.png" width="500" class="m-auto"></p>
 
@@ -154,7 +154,7 @@ Some code examples are as follows:
 
 ### Response Example
 
-Upon a successful request, the API will return the specific details of all batch video tasks this time. For example:
+Upon successful request, the API will return the specific details of all batch video tasks this time. For example:
 ```json
 {
   "items": [
@@ -225,9 +225,9 @@ Upon a successful request, the API will return the specific details of all batch
 }
 ```
 
-The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and each video's specific information is the same as the fields mentioned above.
+The returned result contains multiple fields, among which items include the specific details of batch video tasks, and the specific information of each video task is the same as the fields mentioned above.
 
-- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the result of querying a single task above.
+- `items`, all specific detail information of batch video tasks. It is an array, and each element of the array has the same format as the return result of querying a single task above.
 - `count`, the number of video tasks in this batch query.
 
 #### CURL
@@ -268,4 +268,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Tasks API to query all specific detail information of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
