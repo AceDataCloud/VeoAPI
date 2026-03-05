@@ -14,21 +14,21 @@ There is a free quota available for first-time applicants, allowing you to use t
 
 ## Basic Usage
 
-First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. It mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`. The specific content is as follows:
+First, understand the basic usage method, which involves inputting the prompt `prompt`, the action `action`, the array of reference images for the first and last frames `image_urls`, and the model `model` to obtain the processed result. You first need to simply pass a field `action`, with the value set to `text2video`. This mainly includes three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`). Then, we also need to input the model `model`, which currently includes `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`. The specific content is as follows:
 
 <p><img src="https://cdn.acedata.cloud/vv5pe8.png" width="500" class="m-auto"></p>
 
 Here we can see that we have set the Request Headers, including:
 
 - `accept`: the format of the response result you want to receive, filled in as `application/json`, which means JSON format.
-- `authorization`: the key to call the API, which can be selected directly after application.
+- `authorization`: the key to call the API, which can be directly selected after application.
 
 Additionally, the Request Body is set, including:
 
 - `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast`.
 - `action`: the action for this video generation task, mainly including three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`).
 - `image_urls`: when selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames, with a maximum of three reference images.
-- `resolution`: choose the resolution of the generated video, where the veo31 model supports 4k resolution, while other models do not. All models support 1080p and gif resolutions. If this value is not provided, the default is 720p resolution, mainly divided into: `1080p`, `gif`, `4k`.
+- `resolution`: choose the resolution of the generated video, where the veo31 model supports 4k resolution, while other models do not. All models support 1080p and gif resolutions. If this value is not provided, the default resolution is 720p, mainly divided into: `1080p`, `gif`, `4k`.
 - `prompt`: the prompt.
 - `callback_url`: the URL to receive the callback result.
 
@@ -65,9 +65,9 @@ Additionally, the Request Body is set, including:
 
 - **The only model that requires image input**: `veo31-fast-ingredients` must have images provided (1-3 images), otherwise it cannot run.
 - **Image quantity limit**:
-  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** input.
+  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** as input.
 
-After selection, you can see that the corresponding code is also generated on the right side, as shown in the image below:
+After selection, you can find that the corresponding code is also generated on the right side, as shown in the image below:
 
 <p><img src="https://cdn.acedata.cloud/pmwh4y.png" width="500" class="m-auto"></p>
 
@@ -123,7 +123,7 @@ If you want to generate a video based on the first and last frame images, you ca
 Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
 
 - `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `image_urls`: when selecting the image to video action `image2video`, you must upload the reference image links for the first and last frames.
+- `image_urls`: when selecting the image-to-video action `image2video`, you must upload the reference image links for the first and last frames.
 - `prompt`: the prompt words.
 
 An example of filling in is as follows:
@@ -177,7 +177,7 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above text, thus achieving the image to video function.
+It can be seen that the result content is consistent with the above text, thus achieving the image-to-video function.
 
 ## Get 1080p Video Function
 
@@ -225,7 +225,7 @@ Clicking run, you can find that a result is obtained, as follows:
 }
 ```
 
-It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining the 1080p video.
+It can be seen that the result content is consistent with the above text, thus achieving the function of obtaining a 1080p video.
 
 ## Specify Video Size Generation
 
@@ -268,7 +268,7 @@ Since the time taken by the Veo Videos Generation API is relatively long, approx
 
 The overall process is: when the client initiates a request, an additional `callback_url` field is specified. After the client initiates the API request, the API will immediately return a result containing a `task_id` field, representing the current task ID. When the task is completed, the result of the generated video will be sent to the client-specified `callback_url` in the form of a POST JSON, which also includes the `task_id` field, allowing the task result to be associated by ID.
 
-Let’s understand how to operate specifically through an example.
+Let's understand how to operate specifically through an example.
 
 First, the Webhook callback is a service that can receive HTTP requests, and developers should replace it with the URL of their own HTTP server. For demonstration purposes, a public Webhook sample site https://webhook.site/ is used. By opening this site, you can obtain a Webhook URL, as shown in the image:
 
