@@ -27,7 +27,7 @@ Additionally, the Request Body is set, including:
 
 - `model`: the model for generating the video, mainly including `veo2`, `veo2-fast`, `veo3`, `veo31`, `veo31-fast`, `veo31-fast-ingredients`, and `veo3-fast` models.
 - `action`: the action for this video generation task, mainly including three actions: text-to-video (`text2video`), image-to-video (`image2video`), and get 1080p video (`get1080p`).
-- `image_urls`: when selecting the image-to-video action `image2video`, it is necessary to upload the reference image links for the first and last frames, with a maximum of three reference images.
+- `image_urls`: when selecting the image-to-video action `image2video`, it is necessary to upload the reference image links. `veo2-fast` supports only **1 image** (first frame mode); `veo31-fast-ingredients` supports up to **3 images** (multi-image fusion mode); all other models support up to **2 images** (first and last frame mode).
 - `resolution`: choose the resolution of the generated video, where the veo31 model supports 4k resolution, while other models do not. All models support 1080p and gif resolutions. If this value is not provided, the default resolution is 720p, mainly divided into: `1080p`, `gif`, `4k`.
 - `prompt`: the prompt.
 - `callback_url`: the URL to receive the callback result.
@@ -37,12 +37,12 @@ Additionally, the Request Body is set, including:
 | **Model Name**                   | **Supported Modes**                          | **Image Input Rules**                        |
 | -------------------------- | --------------------------------- | --------------------------------- |
 | **veo2-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | Only supports **1 image** → First frame mode                |
-| **veo3-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo31-fast**             | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo3-fast**              | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo31-fast**             | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
 | **veo31-fast-ingredients** | ❌ Text-to-video (not supported)<br>✅ **Forced multi-image fusion** (must provide images) | **1-3 images** → Multi-image fusion mode (up to 3 images)        |
-| **veo2**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo3**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
-| **veo31**                  | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**3 images** → First and last frame mode |
+| **veo2**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo3**                   | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
+| **veo31**                  | Text-to-video (no image)<br>Image-to-video mode (with image)           | **1 image** → First frame mode<br>**2 images** → First and last frame mode |
 
 ---
 
@@ -65,7 +65,9 @@ Additionally, the Request Body is set, including:
 
 - **The only model that requires image input**: `veo31-fast-ingredients` must have images provided (1-3 images), otherwise it cannot run.
 - **Image quantity limit**:
-  - Except for `veo31-fast-ingredients`, other models support a maximum of **3 images** as input.
+  - `veo2-fast` supports only **1 image** as input (first frame mode).
+  - `veo31-fast-ingredients` supports **1-3 images** as input (multi-image fusion mode).
+  - All other models support a maximum of **2 images** as input (first and last frame mode).
 
 After selection, you can find that the corresponding code is also generated on the right side, as shown in the image below:
 
@@ -195,7 +197,7 @@ At this time, you can see that the video ID is:
 
 Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
 
-- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
+- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, `veo3-fast`, `veo31`, `veo31-fast`, and `veo31-fast-ingredients`.
 - `video_id`: the reference video ID used to get the 1080p video.
 
 An example of filling in is as follows:
@@ -231,8 +233,8 @@ It can be seen that the result content is consistent with the above text, thus a
 
 If you want to specify the generation of a custom-sized Veo video, you can set the parameter `aspect_ratio` to the desired size. Next, we must fill in the prompt words needed for the next step to customize the generated video, specifying the following content:
 
-- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, and `veo3-fast`.
-- `aspect_ratio`: the size of the video, currently supporting: `16:9`, `16:9`, `3:4`, `4:3`, `1:1`, with the default being `16:9`.
+- `model`: the model for generating the video, mainly `veo2`, `veo2-fast`, `veo3`, `veo3-fast`, `veo31`, `veo31-fast`, and `veo31-fast-ingredients`.
+- `aspect_ratio`: the size of the video, currently supporting: `16:9`, `9:16`, `3:4`, `4:3`, `1:1`, with the default being `16:9`.
 - `translation`: whether to enable automatic translation of prompt words, default is `false`.
   An example of filling in is as follows:
 
@@ -339,3 +341,12 @@ When calling the API, if an error occurs, the API will return the corresponding 
 ## Conclusion
 
 Through this document, you have learned how to use the Veo Videos Generation API to generate videos by inputting prompt words and reference images of the first frame. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+
+## Related APIs
+
+After video generation is complete, you can further process the video using the following APIs:
+
+- [Veo Upsample API Integration Guide](veo_upsample_api_integration_guide.md): Upsample a generated video to 1080p / 4K or export a GIF preview.
+- [Veo Extend API Integration Guide](veo_extend_api_integration_guide.md): Extend the duration of a generated video (only veo31 series models supported).
+- [Veo Reshoot API Integration Guide](veo_reshoot_api_integration_guide.md): Keep the scene content and re-generate with a new camera motion (push, pull, pan, tilt, etc.).
+- [Veo Objects API Integration Guide](veo_objects_api_integration_guide.md): Insert or remove objects in a video.

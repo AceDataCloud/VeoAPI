@@ -1014,7 +1014,11 @@ Explore the supported endpoints and integration guides for Veo Video Generation.
 | API | Path | Integration Guidance |
 | ---- | ---- | ------------ |
 | [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f) | `/veo/videos` | [Veo Videos Generation API Integration Guide](https://platform.acedata.cloud/documents/0df6db8d-8b46-4af8-bca5-a15166b938e2) |
-| [$t(document_title_veo_tasks_api)](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) | `/veo/tasks` | [Veo Tasks API Integration Guide](https://platform.acedata.cloud/documents/add58f98-765a-4c2a-b036-a60ee6044879) |
+| [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) | `/veo/tasks` | [Veo Tasks API Integration Guide](https://platform.acedata.cloud/documents/add58f98-765a-4c2a-b036-a60ee6044879) |
+| Veo Upsample API | `/veo/upsample` | [Veo Upsample API Integration Guide](docs/veo_upsample_api_integration_guide.md) |
+| Veo Extend API | `/veo/extend` | [Veo Extend API Integration Guide](docs/veo_extend_api_integration_guide.md) |
+| Veo Reshoot API | `/veo/reshoot` | [Veo Reshoot API Integration Guide](docs/veo_reshoot_api_integration_guide.md) |
+| Veo Objects API | `/veo/objects` | [Veo Objects API Integration Guide](docs/veo_objects_api_integration_guide.md) |
 
 ## Related Resources
 
