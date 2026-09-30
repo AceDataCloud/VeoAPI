@@ -1,24 +1,22 @@
-# Veo Extend API Integration Instructions
+# Integration and Use of Veo Extend API
 
-This document will introduce the integration instructions for the Veo Extend API. This interface is used to **extend the duration** of an already generated Veo video, with AI automatically continuing the subsequent scenes.
+This document introduces the Veo Extend API. This API is used to **extend the duration** of an already-generated Veo video — the AI automatically generates and appends the subsequent scene.
 
 ## Application Process
 
-To use the API, you need to first apply on the corresponding Veo service page. If you are not logged in or registered, you will be automatically redirected to the login page.
+To use the API, you first need to apply for the corresponding service on the Veo service page. If you are not logged in or registered, you will be automatically redirected to the login page.
 
 ## Basic Usage
 
-To call this interface, the following parameters need to be passed:
+The following parameters are required when calling this API:
 
-- `video_id` (required): The task ID of the source video (from `/veo/videos` or this interface itself).
-- `model` (required): The model used for extension, **only supports `veo31-fast` and `veo31` models**, other models are not supported.
-- `prompt` (optional): A text prompt to guide the extension of the scene.
-- `aspect_ratio` (optional): `16:9` or `9:16`, default is `16:9`.
-- `resolution` (optional): `720p` or `1080p`.
+- `video_id` (required): The task ID of the source video (from `/veo/videos` or a previous call to `/veo/extend`).
+- `model` (required): The model used for extension. **Only `veo31-fast` and `veo31` are supported** — other models are not available upstream.
+- `prompt` (optional): A text prompt to guide the content of the extended scene.
 
-Request example:
+### Request Example
 
-```shell
+```bash
 curl -X POST 'https://api.acedata.cloud/veo/extend' \
   -H 'accept: application/json' \
   -H 'authorization: Bearer {token}' \
@@ -30,7 +28,9 @@ curl -X POST 'https://api.acedata.cloud/veo/extend' \
   }'
 ```
 
-The return result is the same as `/veo/videos`:
+### Response Example
+
+The response format is the same as `/veo/videos`:
 
 ```json
 {
@@ -48,22 +48,47 @@ The return result is the same as `/veo/videos`:
 }
 ```
 
-## Important Restrictions
+## Important Limitations
 
-The `video_id` must come from the current `/veo/videos` line generated or the `data[].id` after extension completion. Video IDs generated from earlier historical lines cannot be used for this interface, and calling it will return `400 bad_request`; please regenerate through `/veo/videos` before extending.
+A video produced by `/veo/extend` **can** itself be extended again by calling `/veo/extend`, but **cannot** be passed to the following APIs:
 
-Videos from the extension results of `/veo/extend` can **continue to be extended again by `/veo/extend`**, but **cannot** be processed by the following interfaces:
+- `/veo/reshoot` — camera motion cannot be changed on an extended video.
+- `/veo/objects` — objects cannot be inserted or removed from an extended video.
 
-- `/veo/reshoot` — cannot change camera movements
-- `/veo/objects` — cannot add or remove objects
+If you pass an extended video's `video_id` to those endpoints, the API will return a 400 error. Use the original source video instead.
 
-If the passed `video_id` is an extension result, the related interfaces will return a 400 error; please use the original video as the source.
+## Pricing
 
-## Billing Instructions
-
-- `model=veo31-fast`: 1.68 Credit / time
-- `model=veo31`: 12.00 Credit / time
+- `model=veo31-fast`: 1.20 Credit / request
+- `model=veo31`: 7.64 Credit / request
 
 ## Asynchronous Callback
 
-The interface supports asynchronous mode; by passing `callback_url`, you can receive the result via a POST request after the task is completed. If there is no public callback address, you can also set `async` to `true`, and the interface will immediately return `task_id`, after which you can poll the corresponding task query interface to get the result.
+This API supports asynchronous mode. Pass a `callback_url` field in the request body, and the result will be delivered via a POST request to that URL once the task completes.
+
+## Error Handling
+
+When calling the API, if an error occurs, the API will return the corresponding error code and message. For example:
+
+- `400 token_mismatched`: Bad request, possibly due to missing or invalid parameters.
+- `400 api_not_implemented`: Bad request, possibly due to missing or invalid parameters.
+- `401 invalid_token`: Unauthorized, invalid or missing authorization token.
+- `429 too_many_requests`: Too many requests, you have exceeded the rate limit.
+- `500 api_error`: Internal server error, something went wrong on the server.
+
+### Error Response Example
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "api_error",
+    "message": "fetch failed"
+  },
+  "trace_id": "2cf86e86-22a4-46e1-ac2f-032c0f2a4e89"
+}
+```
+
+## Conclusion
+
+Through this document, you have learned how to use the Veo Extend API to extend the duration of an already-generated Veo video. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.

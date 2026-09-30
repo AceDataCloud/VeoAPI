@@ -1,41 +1,41 @@
-# Veo Reshoot API Integration Instructions
+# Integration and Use of Veo Reshoot API
 
-This document will introduce the integration instructions for the Veo Reshoot API. This interface is used to **regenerate** a previously generated Veo video according to a **new camera motion style**, keeping the visual content consistent, but the camera position and movement will be reinterpreted according to `motion_type`.
+This document introduces the Veo Reshoot API. This API re-generates an already-generated Veo video using a **new camera motion**, keeping the scene content the same while reinterpreting the camera angle and movement according to the specified `motion_type`.
 
 ## Application Process
 
-To use the API, you need to first apply on the corresponding Veo service page. If you are not logged in or registered, you will be automatically redirected to the login page.
+To use the API, you first need to apply for the corresponding service on the Veo service page. If you are not logged in or registered, you will be automatically redirected to the login page.
 
 ## Basic Usage
 
-To call this interface, the following parameters need to be passed:
+The following parameters are required when calling this API:
 
-- `video_id` (required): The task ID of the source video. **Cannot** be the output video of `/veo/extend`.
-- `motion_type` (required): The new camera motion style, using concise aliases in uppercase underscore format.
+- `video_id` (required): The task ID of the source video. **Cannot** be a video produced by `/veo/extend`.
+- `motion_type` (required): The new camera motion style, specified as an uppercase underscore-separated alias.
 
-### Supported Values for `motion_type`
+### Supported `motion_type` Values
 
-| Alias                             | Meaning           |
-| ------------------------------ | ------------ |
-| `STATIONARY`                   | Camera fixed in place       |
-| `STATIONARY_UP`                | Camera fixed, tilting up    |
-| `STATIONARY_DOWN`              | Camera fixed, tilting down    |
-| `STATIONARY_LEFT`              | Camera fixed, panning left      |
-| `STATIONARY_RIGHT`             | Camera fixed, panning right      |
+| Alias | Description |
+|---|---|
+| `STATIONARY` | Camera stays fixed |
+| `STATIONARY_UP` | Camera fixed, tilt up |
+| `STATIONARY_DOWN` | Camera fixed, tilt down |
+| `STATIONARY_LEFT` | Camera fixed, pan left |
+| `STATIONARY_RIGHT` | Camera fixed, pan right |
 | `STATIONARY_DOLLY_IN_ZOOM_OUT` | Camera fixed, dolly in + zoom out |
 | `STATIONARY_DOLLY_OUT_ZOOM_IN` | Camera fixed, dolly out + zoom in |
-| `UP`                           | Camera rising         |
-| `DOWN`                         | Camera descending         |
-| `LEFT_TO_RIGHT`                | Camera panning from left to right     |
-| `RIGHT_TO_LEFT`                | Camera panning from right to left     |
-| `FORWARD`                      | Camera moving forward       |
-| `BACKWARD`                     | Camera moving backward        |
-| `DOLLY_IN_ZOOM_OUT`            | Moving dolly in + zoom out   |
-| `DOLLY_OUT_ZOOM_IN`            | Moving dolly out + zoom in   |
+| `UP` | Camera moves upward |
+| `DOWN` | Camera moves downward |
+| `LEFT_TO_RIGHT` | Camera pans from left to right |
+| `RIGHT_TO_LEFT` | Camera pans from right to left |
+| `FORWARD` | Camera moves forward |
+| `BACKWARD` | Camera moves backward |
+| `DOLLY_IN_ZOOM_OUT` | Moving dolly in + zoom out |
+| `DOLLY_OUT_ZOOM_IN` | Moving dolly out + zoom in |
 
-Request example:
+### Request Example
 
-```shell
+```bash
 curl -X POST 'https://api.acedata.cloud/veo/reshoot' \
   -H 'accept: application/json' \
   -H 'authorization: Bearer {token}' \
@@ -46,12 +46,39 @@ curl -X POST 'https://api.acedata.cloud/veo/reshoot' \
   }'
 ```
 
-The structure of the return result is the same as `/veo/videos`.
+The response format is the same as `/veo/videos`.
 
-## Billing Instructions
+## Pricing
 
-- Single reshoot: 1.20 Credit.
+- Per reshoot: 1.20 Credit
 
 ## Asynchronous Callback
 
-The interface supports asynchronous mode; by passing in `callback_url`, you can receive the result via a POST request after the task is completed. If there is no public callback address, you can also set `async` to `true`, and the interface will immediately return `task_id`, after which you can poll the corresponding task query interface to obtain the result.
+This API supports asynchronous mode. Pass a `callback_url` field in the request body, and the result will be delivered via a POST request to that URL once the task completes.
+
+## Error Handling
+
+When calling the API, if an error occurs, the API will return the corresponding error code and message. For example:
+
+- `400 token_mismatched`: Bad request, possibly due to missing or invalid parameters.
+- `400 api_not_implemented`: Bad request, possibly due to missing or invalid parameters.
+- `401 invalid_token`: Unauthorized, invalid or missing authorization token.
+- `429 too_many_requests`: Too many requests, you have exceeded the rate limit.
+- `500 api_error`: Internal server error, something went wrong on the server.
+
+### Error Response Example
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "api_error",
+    "message": "fetch failed"
+  },
+  "trace_id": "2cf86e86-22a4-46e1-ac2f-032c0f2a4e89"
+}
+```
+
+## Conclusion
+
+Through this document, you have learned how to use the Veo Reshoot API to re-generate an already-generated Veo video with a new camera motion. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
