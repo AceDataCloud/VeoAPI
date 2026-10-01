@@ -592,6 +592,8 @@ html.dark .veo-page .btn-cta-light { color: #ffffff !important; }
 html.dark .veo-page .btn-cta-ghost { color: #94a3b8 !important; }
 html.dark .veo-page .btn-cta-ghost:hover { color: var(--el-text-color-primary) !important; }
 html.dark .veo-page .price-btn-fill { color: #ffffff !important; }
+.veo-page .code-left,.veo-page .code-right{width:100%;max-width:100%;min-width:0}
+.veo-page .code-wrap{max-width:100%;min-width:0}
 </style><div class="veo-page"><section class="veo-hero">
   <div class="v-container-narrow">
     <div class="hero-badge">
@@ -599,11 +601,11 @@ html.dark .veo-page .price-btn-fill { color: #ffffff !important; }
       Veo API · Ace Data Cloud
     </div>
     <h1>
-      Google Veo API：<br/>
+      Google Veo API:<br/>
       Generate <span>AI Videos</span>
     </h1>
     <p class="hero-subtitle">
-      Call Google DeepMind's Veo video generation model through a stable REST API. Supports Text-to-Video and Image-to-Video, covering Veo 3 and Veo 3.1 series models, with output up to 4K resolution.
+      Call Google DeepMind's Veo video generation models through a reliable REST API. Supports Text-to-Video and Image-to-Video, covering the Veo 3 and Veo 3.1 model series, with output up to 4K resolution.
     </p>
     <div class="hero-actions">
       <a href="/documents/veo-videos" class="s-btn-primary">📄 View Documentation</a>
@@ -612,7 +614,7 @@ html.dark .veo-page .price-btn-fill { color: #ffffff !important; }
     <div class="hero-highlights">
       <span class="h-item">🎬 5 Model Versions</span>
       <span class="h-div"></span>
-      <span class="h-item">📹 3 Actions</span>
+      <span class="h-item">📹 3 Action Types</span>
       <span class="h-div"></span>
       <span class="h-item">📄 OpenAPI 3.0 Specification</span>
       <span class="h-div"></span>
@@ -636,7 +638,7 @@ html.dark .veo-page .price-btn-fill { color: #ffffff !important; }
       <div>
         <div class="stat-icon">📡</div>
         <div class="stat-val">2</div>
-        <div class="stat-lbl">API Interfaces</div>
+        <div class="stat-lbl">API Endpoints</div>
       </div>
       <div>
         <div class="stat-icon">🎞️</div>
@@ -649,49 +651,49 @@ html.dark .veo-page .price-btn-fill { color: #ffffff !important; }
 <section class="v-section v-bg-white">
   <div class="v-container-narrow">
     <div class="v-header">
-      <h2>Does Google Veo have an official API?</h2>
+      <h2>Does Google Veo Have an Official API?</h2>
     </div>
     <div class="v-section-body">
-      <p>Google's Veo video generation model is currently only available through the Vertex AI platform, requiring complex GCP project configuration and regional restrictions.</p>
-      <p>Ace Data Cloud provides a<strong class="s-text-dark">simple REST API</strong> that allows you to directly call the entire range of Veo models— including the latest <strong class="s-text-brand">Veo 3.1</strong>—without a GCP account, completing Text-to-Video, Image-to-Video, and 4K upgrades through a unified interface, equipped with OpenAPI specifications, Webhook support, and pay-as-you-go pricing.</p>
+      <p>Google's Veo video generation models are currently available only through the Vertex AI platform, requiring complex GCP project configuration and subject to regional restrictions.</p>
+      <p>Ace Data Cloud provides a <strong class="s-text-dark">simple REST API</strong>, allowing you to directly call the full Veo model lineup without a GCP account—including the latest <strong class="s-text-brand">Veo 3.1</strong>—to complete Text-to-Video, Image-to-Video, and 4K upscaling through a unified interface, with an OpenAPI specification, Webhook support, and pay-as-you-go pricing.</p>
     </div>
   </div>
 </section><section class="v-section v-bg-gray">
   <div class="v-container">
     <div class="v-header">
-      <h2>Core Features of Veo API</h2>
-      <p>Top video generation technology from Google DeepMind, available instantly through a simple API</p>
+      <h2>Core Features of the Veo API</h2>
+      <p>Google DeepMind's cutting-edge video generation technology, instantly available through a simple API</p>
     </div>
     <div class="features-grid">
       <div class="feat-card">
         <div class="feat-icon">🎬</div>
         <h3>Text-to-Video</h3>
-        <p>Generate high-quality videos from text prompts. Supports natural language descriptions of scenes, objects, actions, and styles, turning text into realistic dynamic visuals.</p>
+        <p>Generate high-quality videos from text prompts. Supports natural-language descriptions of scenes, objects, actions, and styles, with Veo transforming text into realistic moving visuals.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">🖼️</div>
         <h3>Image-to-Video</h3>
-        <p>Upload reference images, and Veo will transform them into smooth dynamic videos. Perfectly retains the composition, lighting, and style of the original image, supporting custom aspect ratios.</p>
+        <p>Upload a reference image, and Veo transforms it into a smooth animated video. Perfectly preserves the original image's composition, lighting, and style, with support for custom aspect ratios.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">📐</div>
         <h3>4K Ultra HD</h3>
-        <p>Upgrade videos to 1080p/4K resolution using <code>get1080p</code> and <code>resolution: 4k</code>. Rich in detail, with realistic lighting, meeting the needs of professional film production.</p>
+        <p>Upgrade videos to 1080p/4K resolution with <code>get1080p</code> and <code>resolution: 4k</code>. Rich details and realistic lighting meet the needs of professional film and video production.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">⚡</div>
-        <h3>Fast Models</h3>
-        <p>Veo 3 Fast, Veo 3.1 Fast, and other fast versions significantly reduce latency and costs, suitable for rapid iteration and bulk scene generation.</p>
+        <h3>Fast High-Speed Models</h3>
+        <p>High-speed versions such as Veo 3 Fast and Veo 3.1 Fast significantly reduce latency and costs, making them ideal for rapid iteration and batch generation scenarios.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">🌐</div>
         <h3>Multiple Aspect Ratios</h3>
-        <p>Supports various aspect ratios such as 16:9, 9:16, 1:1, 4:3, 3:4, easily adapting to different platform formats like landscape, portrait, and square.</p>
+        <p>Supports multiple aspect ratios including 16:9, 9:16, 1:1, 4:3, and 3:4, easily adapting to landscape, portrait, square, and other platform formats.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">🔗</div>
-        <h3>Webhook Asynchronous Callback</h3>
-        <p>Set <code>callback_url</code> to automatically receive result notifications after video generation is complete. No polling required, and you can also check progress through the free Tasks API.</p>
+        <h3>Webhook Asynchronous Callbacks</h3>
+        <p>Set <code>callback_url</code> to automatically receive result notifications after video generation is complete. No polling required; you can also check progress through the free Tasks API.</p>
       </div>
     </div>
   </div>
@@ -759,28 +761,28 @@ print(response.json())</pre>
         </div>
       </div>
       <div class="code-right">
-        <h2>Quick Start - Get Started in 5 Minutes</h2>
-        <p>A simple REST API that uses Bearer Token authentication. A single request can generate your first AI video.</p>
+        <h2>Quick Start — Get Up and Running in 5 Minutes</h2>
+        <p>A concise REST API using Bearer Token authentication. Generate your first AI video with a single request.</p>
         <div class="explain-steps">
           <div class="explain-step">
             <div class="step-num">1</div>
             <div class="step-text">
-              <h4>Get API Key</h4>
-              <p>Register on Ace Data Cloud and obtain your Bearer Token from the console</p>
+              <h4>Get an API Key</h4>
+              <p>Sign up for Ace Data Cloud and get your Bearer Token from the console</p>
             </div>
           </div>
           <div class="explain-step">
             <div class="step-num">2</div>
             <div class="step-text">
-              <h4>Send POST Request</h4>
-              <p>Send a request to <code>/veo/videos</code> with the prompt, model, and aspect ratio</p>
+              <h4>Send a POST Request</h4>
+              <p>Send a request to <code>/veo/videos</code> with a prompt, model, and aspect ratio</p>
             </div>
           </div>
           <div class="explain-step">
             <div class="step-num">3</div>
             <div class="step-text">
               <h4>Get Your Video</h4>
-              <p>Retrieve the generated video URL via Webhook or Tasks API - ready to use immediately</p>
+              <p>Retrieve the generated video URL via Webhook or the Tasks API — ready to use instantly</p>
             </div>
           </div>
         </div>
@@ -790,29 +792,29 @@ print(response.json())</pre>
 </section><section class="v-section v-bg-gray">
   <div class="v-container">
     <div class="v-header">
-      <h2>What can be built using the Veo API?</h2>
+      <h2>What can you build with the Veo API?</h2>
       <p>From creative content to enterprise applications—developers are building these projects</p>
     </div>
     <div class="usecases-grid">
       <div class="uc-card">
         <div class="uc-icon">🎬</div>
         <h3>Short Videos and Ads</h3>
-        <p>Batch generate product showcase videos, social media short videos, and advertising materials</p>
+        <p>Generate product showcase videos, social media shorts, and advertising assets in bulk</p>
       </div>
       <div class="uc-card">
         <div class="uc-icon">🎮</div>
         <h3>Games and Animation</h3>
-        <p>Generate video materials for game trailers, cutscenes, and concept visualizations</p>
+        <p>Generate video assets for game trailers, cutscenes, and concept visualizations</p>
       </div>
       <div class="uc-card">
         <div class="uc-icon">🤖</div>
-        <h3>AI Agent and MCP</h3>
-        <p>Integrate with AI Agents like Claude and ChatGPT through the MCP Server to generate videos using natural language</p>
+        <h3>AI Agents and MCP</h3>
+        <p>Integrate with AI Agents such as Claude and ChatGPT through an MCP Server to generate videos using natural language</p>
       </div>
       <div class="uc-card">
         <div class="uc-icon">🏢</div>
         <h3>Enterprise Content Production</h3>
-        <p>Automatically generate professional video content for training videos, product demonstrations, and marketing campaigns</p>
+        <p>Automatically generate professional video content for training videos, product demos, and marketing campaigns</p>
       </div>
     </div>
   </div>
@@ -820,26 +822,26 @@ print(response.json())</pre>
 <section class="v-section v-bg-white">
   <div class="v-container">
     <div class="v-header">
-      <h2>Quick Start in 3 Steps</h2>
+      <h2>Get Started in 3 Steps</h2>
       <p>From registration to generating your first AI video, it takes less than 5 minutes</p>
     </div>
     <div class="steps-row">
       <div class="stp-card">
         <div class="stp-num">01</div>
-        <h3>Register and Get API Key</h3>
+        <h3>Register and Get an API Key</h3>
         <p>Create a free account on Ace Data Cloud. Generate your Bearer Token from the API management console.</p>
       </div>
       <div class="stp-conn"></div>
       <div class="stp-card">
         <div class="stp-num">02</div>
-        <h3>Initiate Your First API Call</h3>
-        <p>Send a POST request with a text prompt to <code>/veo/videos</code>. You can use SDK, cURL, or any HTTP client.</p>
+        <h3>Make Your First API Call</h3>
+        <p>Send a POST request with a text prompt to <code>/veo/videos</code>. You can use an SDK, cURL, or any HTTP client.</p>
       </div>
       <div class="stp-conn"></div>
       <div class="stp-card">
         <div class="stp-num">03</div>
-        <h3>Integration and Expansion</h3>
-        <p>Embed the API into your application. Use Webhook for asynchronous processing and confidently scale to production.</p>
+        <h3>Integrate and Scale</h3>
+        <p>Embed the API into your application. Use Webhooks for asynchronous processing and scale confidently to production.</p>
       </div>
     </div>
     <div class="steps-cta">
@@ -850,7 +852,7 @@ print(response.json())</pre>
   <div class="v-container">
     <div class="v-header">
       <h2>Why choose Ace Data Cloud's Veo API?</h2>
-      <p>Check out our comparative advantages on the features that matter most to developers</p>
+      <p>See our advantages in the features developers care about most</p>
     </div>
     <div class="cmp-wrap">
       <table class="cmp-table">
@@ -878,7 +880,7 @@ print(response.json())</pre>
             <td>Partial Support</td>
           </tr>
           <tr>
-            <td>Fast Model</td>
+            <td>Fast Ultra-Fast Model</td>
             <td class="cmp-us"><span class="ck">✓</span></td>
             <td>Partial Support</td>
           </tr>
@@ -898,7 +900,7 @@ print(response.json())</pre>
             <td><span class="cx">✗</span></td>
           </tr>
           <tr>
-            <td>Pay-as-you-go</td>
+            <td>Pay-as-You-Go</td>
             <td class="cmp-us"><span class="ck">✓</span></td>
             <td>Partial Support</td>
           </tr>
@@ -910,20 +912,20 @@ print(response.json())</pre>
   <div class="v-container">
     <div class="v-header">
       <h2>Which model is right for you?</h2>
-      <p>Choose from 5 Veo model versions based on your needs for quality, speed, and cost</p>
+      <p>Choose from 5 Veo model versions based on your quality, speed, and cost needs</p>
     </div>
     <div class="models-grid">
       <div class="mdl-card mdl-rec">
         <div class="mdl-rec-badge">Recommended</div>
         <div class="mdl-head">
           <h3>Veo 3 / 3 Fast</h3>
-          <span class="mdl-tag-blue mdl-tag">Production Environment</span>
+          <span class="mdl-tag-blue mdl-tag">Production</span>
         </div>
-        <p class="mdl-desc">An enhanced version with significantly improved quality. The Fast version strikes the best balance between high quality and low cost.</p>
+        <p class="mdl-desc">An enhanced version with significantly improved quality. The Fast version offers the best balance between high quality and low cost.</p>
         <ul class="mdl-feats">
-          <li>✓ Higher image consistency and motion smoothness</li>
-          <li>✓ Fast version as low as $0.069 / call</li>
-          <li>✓ Standard version $0.727 / call (highest quality)</li>
+          <li>✓ Higher visual consistency and smoother motion</li>
+          <li>✓ Fast version from as low as $0.069 / call</li>
+          <li>✓ Standard version $0.727 / call (highest visual quality)</li>
           <li>✓ Suitable for production-grade applications</li>
         </ul>
       </div>
@@ -932,25 +934,25 @@ print(response.json())</pre>
           <h3>Veo 3.1</h3>
           <span class="mdl-tag-purple mdl-tag">Latest Flagship</span>
         </div>
-        <p class="mdl-desc">Google's latest flagship video model, supporting native 4K resolution output, with the highest fidelity and scene understanding.</p>
+        <p class="mdl-desc">Google's latest flagship video model, supporting native 4K resolution output with the highest fidelity and scene understanding.</p>
         <ul class="mdl-feats">
-          <li>✓ Native 4K ultra-high-definition output</li>
+          <li>✓ Native 4K Ultra HD output</li>
           <li>✓ Highest visual fidelity</li>
-          <li>✓ Strongest scene understanding and physical simulation</li>
-          <li>✓ Fast version available ($0.069 / each)</li>
+          <li>✓ Strongest scene understanding and physics simulation</li>
+          <li>✓ Fast version available ($0.069 / call)</li>
         </ul>
       </div>
       <div class="mdl-card">
         <div class="mdl-head">
           <h3>Veo 3.1 Fast Ingredients</h3>
-          <span class="mdl-tag-purple mdl-tag">Multi-Image Fusion</span>
+          <span class="mdl-tag-purple mdl-tag">Multi-image Fusion</span>
         </div>
-        <p class="mdl-desc">Designed for multi-image fusion scenarios, upload 1-3 reference images, and the AI automatically fuses them to generate creative videos.</p>
+        <p class="mdl-desc">Designed specifically for multi-image fusion scenarios: upload 1-3 reference images, and AI automatically combines them to create creative videos.</p>
         <ul class="mdl-feats">
           <li>✓ Supports fusion of 1-3 images</li>
-          <li>✓ Must provide images (pure text-to-video is not supported)</li>
-          <li>✓ Fast speed, as low as $0.069 / each</li>
-          <li>✓ Unique multi-image creative synthesis capability</li>
+          <li>✓ Images are required (text-to-video only is not supported)</li>
+          <li>✓ Fast speed, from as low as $0.069 / call</li>
+          <li>✓ Unique multi-image creative compositing capability</li>
         </ul>
       </div>
     </div>
@@ -959,40 +961,40 @@ print(response.json())</pre>
   <div class="v-container">
     <div class="v-header">
       <h2>Veo API Pricing</h2>
-      <p>Transparent pay-as-you-go pricing. No subscription fees. No hidden costs. Pay only for usage.</p>
-      <p style="font-size:14px;color:#94a3b8;margin-top:8px;">Up to 27% discount on bulk packages</p>
+      <p>Transparent pay-as-you-go pricing. No subscription fees. No hidden charges. Pay only for what you use.</p>
+      <p style="font-size:14px;color:#94a3b8;margin-top:8px;">Up to 27% off bulk packages</p>
     </div>
     <div class="price-grid">
       <div class="price-card price-card-feat">
-        <div class="price-feat-badge">Pay-as-you-go</div>
+        <div class="price-feat-badge">Pay as you go</div>
         <div class="price-tier">Video Generation</div>
         <div>
           <span class="price-amt">$0.069</span>
-          <span class="price-per"> per call</span>
+          <span class="price-per"> starting / call</span>
         </div>
-        <p class="price-desc">Generates 1 segment of video per call—different prices for different models</p>
+        <p class="price-desc">Each call generates 1 video—pricing varies by model</p>
         <ul class="price-feats">
           <li><span class="price-ck">✓</span> Veo 3 Fast / 3.1 Fast: as low as $0.069 / call</li>
           <li><span class="price-ck">✓</span> Veo 3 / 3.1 Standard: as low as $0.727 / call</li>
           <li><span class="price-ck">✓</span> 1080p upgrade: $0.015 / call</li>
           <li><span class="price-ck">✓</span> Webhook + Task polling</li>
-          <li><span class="price-ck">✓</span> Task polling—<strong>free</strong></li>
+          <li><span class="price-ck">✓</span> Task polling—<strong>Free</strong></li>
         </ul>
-        <a href="https://platform.acedata.cloud/services/veo?tab=pricing" class="price-btn price-btn-fill">View Pricing Details</a>
-        <a href="https://platform.acedata.cloud/documents/veo-videos" class="price-btn price-btn-out" style="margin-top:8px">View API Documentation</a>
+        <a href="https://platform.acedata.cloud/services/veo?tab=pricing" class="price-btn price-btn-fill">View pricing details</a>
+        <a href="https://platform.acedata.cloud/documents/veo-videos" class="price-btn price-btn-out" style="margin-top:8px">View API documentation</a>
       </div>
       <div class="price-card">
-        <div class="price-tier">Enterprise Edition</div>
+        <div class="price-tier">Enterprise</div>
         <div>
           <span class="price-amt">Custom</span>
         </div>
-        <p class="price-desc">Bulk discounts for high-usage teams</p>
+        <p class="price-desc">Bulk discounts for high-volume teams</p>
         <ul class="price-feats">
           <li><span class="price-ck">✓</span> Usage-based discounts</li>
           <li><span class="price-ck">✓</span> Priority support</li>
           <li><span class="price-ck">✓</span> Dedicated account manager</li>
           <li><span class="price-ck">✓</span> Custom rate limits</li>
-          <li><span class="price-ck">✓</span> SLA guarantees</li>
+          <li><span class="price-ck">✓</span> SLA guarantee</li>
         </ul>
         <a href="/support" class="price-btn price-btn-out">Contact Sales</a>
       </div>
@@ -1003,20 +1005,20 @@ print(response.json())</pre>
       <p>Everything you need to know about using the Veo API</p>
     </div><div class="faq-list"><details class="faq-item">
         <summary class="faq-q">
-          <span>What is the difference between Veo and Google official Vertex AI?</span>
+          <span>What is the difference between Veo and Google's official Vertex AI?</span>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>Google officially provides Veo through Vertex AI, requiring a GCP account, project configuration, and regional restrictions. Ace Data Cloud offers a simple REST API without GCP, pay-as-you-go, globally available, and can be integrated in 5 minutes. The underlying calls use the same Veo model, with consistent output quality.</p>
+          <p>Google officially provides Veo through Vertex AI, which requires a GCP account, project configuration, and is subject to regional restrictions. Ace Data Cloud provides a simple REST API that does not require GCP, with pay-as-you-go pricing, global availability, and integration in as little as 5 minutes. It calls the same underlying Veo models and delivers identical output quality.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">
-          <span>What is the pricing model?</span>
+          <span>How does pricing work?</span>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>Pay-as-you-go, with no subscription or monthly fees. Veo 3 Fast starts at $0.069 per call, standard model $0.727 per call. Bulk packages can enjoy up to 27% discount. Task polling is free forever.</p>
+          <p>Pay as you go, with no subscription or monthly fees. Veo 3 Fast starts at $0.069 / call, while standard models cost $0.727 / call. Bulk plans offer discounts of up to 27%. Task polling is always free.</p>
         </div>
       </details>
       <details class="faq-item">
@@ -1025,42 +1027,42 @@ print(response.json())</pre>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>Supports 5 model versions: Veo 3, Veo 3 Fast, Veo 3.1, Veo 3.1 Fast, and Veo 3.1 Fast Ingredients. Covers a complete product line from ultra-low cost to flagship 4K, with Veo 3.1 Fast Ingredients supporting multi-image fusion to generate videos. We will support new models released by Google as soon as possible.</p>
+          <p>Five model versions are supported: Veo 3, Veo 3 Fast, Veo 3.1, Veo 3.1 Fast, and Veo 3.1 Fast Ingredients. They cover the full product line from ultra-fast, low-cost options to flagship 4K, with Veo 3.1 Fast Ingredients supporting multi-image fusion for video generation. We will support new models as soon as Google releases them.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">
-          <span>How to handle longer video generation times?</span>
+          <span>How do I handle longer video generation times?</span>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>Two ways: (1) Use <code>callback_url</code>—set the Webhook URL, and the results will be automatically pushed after video generation is complete. (2) Poll through <code>/veo/tasks</code>—this interface is free and allows you to check the task status and progress at any time.</p>
+          <p>There are two options: (1) Use <code>callback_url</code>—set a Webhook URL, and results will be automatically pushed when video generation is complete. (2) Poll through <code>/veo/tasks</code>—this endpoint is free and lets you view task status and progress at any time.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">
-          <span>Does it support Image-to-Video?</span>
+          <span>Is Image-to-Video supported?</span>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>Yes. Set <code>action</code> to <code>image2video</code>, and pass the reference image URL through the <code>image_urls</code> parameter, and Veo will convert it into a dynamic video. Custom <code>aspect_ratio</code> is supported, with options for various ratios such as 9:16, 1:1, 16:9, etc.</p>
+          <p>Yes. Set <code>action</code> to <code>image2video</code>, then pass reference image URLs through the <code>image_urls</code> parameter, and Veo will turn them into dynamic videos. Custom <code>aspect_ratio</code> is supported, with options including 9:16, 1:1, 16:9, and more.</p>
         </div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">
-          <span>What is the maximum output resolution?</span>
+          <span>How high is the output resolution?</span>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>The default output is 720p. You can upgrade the generated video to 1080p with the <code>get1080p</code> action for an additional $0.015 per call. Veo 3.1 supports native 4K output (via the <code>resolution: 4k</code> parameter).</p>
+          <p>The default output is 720p. You can upgrade generated videos to 1080p through the <code>get1080p</code> action for only an additional $0.015 / call. Veo 3.1 supports native 4K output (via the <code>resolution: 4k</code> parameter).</p>
         </div>
       </details><details class="faq-item">
         <summary class="faq-q">
-          <span>Can the prompt be automatically translated?</span>
+          <span>Can prompts be translated automatically?</span>
           <span class="faq-chev">▾</span>
         </summary>
         <div class="faq-a">
-          <p>Yes. Set the <code>translation: true</code> parameter, and the API will automatically translate non-English prompts into English before generating the video, making it easier for Chinese users to describe scenes in their native language.</p>
+          <p>Yes. Set the <code>translation: true</code> parameter, and the API will automatically translate non-English prompts into English before generating the video, making it convenient for Chinese users to describe scenes directly in their native language.</p>
         </div>
       </details></div></div></section><section class="v-section v-bg-gray">
   <div class="v-container">
@@ -1073,7 +1075,7 @@ print(response.json())</pre>
         <div class="rel-icon">🎬</div>
         <div class="rel-info">
           <h3>Luma API</h3>
-          <p>Create AI-generated videos using the Dream Machine and Ray models</p>
+          <p>Create AI-generated videos with Dream Machine and Ray models</p>
         </div>
         <span class="rel-arrow">→</span>
       </a>
@@ -1081,7 +1083,7 @@ print(response.json())</pre>
         <div class="rel-icon">🎬</div>
         <div class="rel-info">
           <h3>Hailuo API</h3>
-          <p>MiniMax Hailuo video generation model—director-level shot control</p>
+          <p>MiniMax Hailuo video generation model—director-level camera control</p>
         </div>
         <span class="rel-arrow">→</span>
       </a>
@@ -1097,7 +1099,7 @@ print(response.json())</pre>
         <div class="rel-icon">💃</div>
         <div class="rel-info">
           <h3>Seedance API</h3>
-          <p>ByteDance Seedance—dance and action video generation</p>
+          <p>ByteDance Seedance—dance and motion video generation</p>
         </div>
         <span class="rel-arrow">→</span>
       </a>
@@ -1107,7 +1109,7 @@ print(response.json())</pre>
 <section class="veo-cta">
   <div class="v-container-narrow">
     <h2>Start Generating AI Videos Now</h2>
-    <p>Join the developer community and build with the powerful video generation capabilities of Google Veo. Pay as you go—no subscription fees, no commitments.</p>
+    <p>Join the developer community and build with Google Veo's powerful video generation capabilities. Pay as you go—no subscription fees, no commitment.</p>
     <div class="cta-actions">
       <a href="/documents/veo-videos" class="btn-cta-light">📄 View Documentation →</a>
       <a href="/support" class="btn-cta-ghost">Contact Us</a>
