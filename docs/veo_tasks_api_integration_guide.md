@@ -6,21 +6,23 @@ This document will provide detailed integration instructions for the Veo Tasks A
 
 ## Application Process
 
-To use the Veo Videos Generation API, first obtain your API Token from the [Ace Data Cloud Console](https://platform.acedata.cloud/console/applications) for future use.
+To use the Veo Tasks API, you first need to apply for the corresponding service on the application page [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f), and then copy the task ID from the Veo Videos Generation API, as shown in the image below:
 
-![](https://cdn.acedata.cloud/dvc3cg.jpg)
+<p><img src="https://cdn.acedata.cloud/txlg6g.png" width="500" class="m-auto"></p>
 
-If you are not logged in or registered, you will be automatically redirected to the login page to invite you to register and log in, and after completion, you will be automatically returned to the current page.
+Finally, go to the Tasks API page [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c) to apply for the corresponding service. After entering the page, click the "Acquire" button, as shown in the image below:
 
-**One API Token can call all services on the platform without needing to apply separately for each service.** The first application will grant a free quota for a trial experience; when the quota is insufficient, you can recharge the general balance in the [console](https://platform.acedata.cloud/console/coin).
+![Application Page](https://cdn.acedata.cloud/rci31i.png)
 
-> 📘 Complete Documentation: [Veo Videos Generation API →](https://platform.acedata.cloud/documents/veo-videos)
+If you are not logged in or registered, you will be automatically redirected to the [login page](https://platform.acedata.cloud) inviting you to register and log in. After logging in or registering, you will be automatically returned to the current page.
+
+There is a free quota available for first-time applicants, allowing you to use this API for free.
 
 ## Request Example
 
-The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the documentation [Veo Videos Generation API](https://platform.acedata.cloud/documents/veo-videos).
+The Veo Tasks API can be used to query the results of the Veo Videos Generation API. For information on how to use the Veo Videos Generation API, please refer to the document [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f).
 
-We will take a task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
+We will take one task ID returned by the Veo Videos Generation API as an example to demonstrate how to use this API. Suppose we have a task ID: 1ebe4f2b-59ba-4385-a4ea-0ce8a3fe12ed, and we will demonstrate how to pass in a task ID.
 
 ### Task Example Image
 
@@ -30,7 +32,7 @@ We will take a task ID returned by the Veo Videos Generation API as an example t
 
 **Request Headers** include:
 
-- `accept`: Specifies that the response result should be in JSON format, filled in as `application/json`.
+- `accept`: Specifies that the response should be in JSON format, set to `application/json`.
 - `authorization`: The key to call the API, which can be selected directly after application.
 
 **Request Body** includes:
@@ -44,7 +46,7 @@ Set as shown in the image below:
 
 ### Code Example
 
-It can be seen that various language codes have been automatically generated on the right side of the page, as shown in the image:
+You can see that various language codes have been automatically generated on the right side of the page, as shown in the image below:
 
 <p><img src="https://cdn.acedata.cloud/bsqh3i.png" width="500" class="m-auto"></p>
 
@@ -87,7 +89,7 @@ print(response.text)
 
 ### Response Example
 
-Upon successful request, the API will return the detailed information of the video task here. For example:
+Upon a successful request, the API will return the details of the video task here. For example:
 
 ```json
 {
@@ -96,14 +98,11 @@ Upon successful request, the API will return the detailed information of the vid
   "api_id": "52a0fa83-3c78-4793-b45a-c1a5c869ae46",
   "application_id": "b7341df0-3a87-40ef-8f3c-a7dda97816a2",
   "created_at": 1753435158.509,
-  "started_at": 1753435158.569,
-  "finished_at": 1753435250.969,
-  "elapsed": 92.4,
   "credential_id": "1f64eaaa-eff0-4f18-bfc2-8c5b1e7949ae",
   "request": {
     "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
     "action": "text2video",
-    "model": "veo2-fast",
+    "model": "veo2",
     "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
   },
   "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
@@ -126,19 +125,15 @@ Upon successful request, the API will return the detailed information of the vid
 }
 ```
 
-The returned result contains multiple fields, with the request field being the request body when the task was initiated, while the response field is the response body returned after the task is completed. The field descriptions are as follows.
+The returned result contains multiple fields, with the request field being the request body when the task was initiated, and the response field being the response body returned after the task is completed. The field descriptions are as follows.
 
 - `id`: The ID of the video task generated, used to uniquely identify this video generation task.
-- `request`: The request information in the video task.
-- `response`: The return information in the video task.
-- `created_at`: The task creation time, Unix timestamp (seconds, floating point).
-- `started_at`: The task execution start time, Unix timestamp (seconds, floating point).
-- `finished_at`: The task completion time, Unix timestamp (seconds, floating point). This field is not returned if the task is not completed.
-- `elapsed`: The time taken for task execution, in seconds (floating point, rounded to 3 decimal places). This field is not returned if the task is not completed.
+- `request`: The request information in the video task query.
+- `response`: The return information in the video task query.
 
 ## Batch Query Operation
 
-This is for querying the details of multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
+This is for querying the details of video tasks for multiple task IDs, and unlike the above, the action needs to be selected as retrieve_batch.
 
 **Request Body** includes:
 
@@ -151,7 +146,7 @@ Set as shown in the image below:
 
 ### Code Example
 
-It can be seen that various language codes have been automatically generated on the right side of the page, as shown in the image:
+You can see that various language codes have been automatically generated on the right side of the page, as shown in the image below:
 
 <p><img src="https://cdn.acedata.cloud/g3b7g6.png" width="500" class="m-auto"></p>
 
@@ -159,7 +154,7 @@ Some code examples are as follows:
 
 ### Response Example
 
-Upon successful request, the API will return the specific details of all batch video tasks this time. For example:
+Upon a successful request, the API will return the specific details of all batch video tasks this time. For example:
 ```json
 {
   "items": [
@@ -169,14 +164,11 @@ Upon successful request, the API will return the specific details of all batch v
       "api_id": "52a0fa83-3c78-4793-b45a-c1a5c869ae46",
       "application_id": "b7341df0-3a87-40ef-8f3c-a7dda97816a2",
       "created_at": 1753435158.509,
-      "started_at": 1753435158.569,
-      "finished_at": 1753435250.969,
-      "elapsed": 92.4,
       "credential_id": "1f64eaaa-eff0-4f18-bfc2-8c5b1e7949ae",
       "request": {
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
-        "model": "veo2-fast",
+        "model": "veo2",
         "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
@@ -203,14 +195,11 @@ Upon successful request, the API will return the specific details of all batch v
       "api_id": "52a0fa83-3c78-4793-b45a-c1a5c869ae46",
       "application_id": "b7341df0-3a87-40ef-8f3c-a7dda97816a2",
       "created_at": 1753435158.509,
-      "started_at": 1753435158.569,
-      "finished_at": 1753435250.969,
-      "elapsed": 92.4,
       "credential_id": "1f64eaaa-eff0-4f18-bfc2-8c5b1e7949ae",
       "request": {
         "callback_url": "https://webhook.site/aed5cd28-f8aa-4dca-9480-8ec9b42137dc",
         "action": "text2video",
-        "model": "veo2-fast",
+        "model": "veo2",
         "prompt": "White ceramic coffee mug on glossy marble countertop with morning window light. Camera slowly rotates 360 degrees around the mug, pausing briefly at the handle."
       },
       "trace_id": "d1d53c04-58c5-4c40-bb63-f00188540e56",
@@ -236,9 +225,9 @@ Upon successful request, the API will return the specific details of all batch v
 }
 ```
 
-The returned result contains multiple fields, among which `items` includes the specific details of batch video tasks, and the specific information of each video task is the same as the fields in the previous single task query result.
+The returned result contains multiple fields, among which items include the specific details of batch video tasks, and each video's specific information is the same as the fields mentioned above.
 
-- `items`, all specific detail information of batch video tasks. It is an array, and each element of the array has the same format as the previous single task return result.
+- `items`, all specific details of batch video tasks. It is an array, and each element of the array has the same format as the return result of querying a single task above.
 - `count`, the number of video tasks in this batch query.
 
 #### CURL
@@ -279,4 +268,4 @@ When calling the API, if an error occurs, the API will return the corresponding 
 
 ## Conclusion
 
-Through this document, you have learned how to use the Veo Tasks API to query all specific detail information of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
+Through this document, you have learned how to use the Veo Tasks API to query all specific details of single or batch video tasks. We hope this document can help you better integrate and use this API. If you have any questions, please feel free to contact our technical support team.
