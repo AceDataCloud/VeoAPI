@@ -6,14 +6,14 @@ Veo AI video generation service with text and image input.
 
 ![Veo Video Generation](https://cdn.acedata.cloud/v5cb22.jpg)
 
-API home page: [Ace Data Cloud - Veo Video Generation](https://platform.acedata.cloud/services/73cd74ba-a1bd-4a12-8df6-11d64c38df14?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_services_73cd74ba_a1bd_4a12_8df6_11d64c38df14)
+API home page: [Ace Data Cloud - Veo Video Generation](https://platform.acedata.cloud/services/73cd74ba-a1bd-4a12-8df6-11d64c38df14?utm_source=github&utm_medium=referral&utm_campaign=evergreen)
 
 Keywords: veo-api, ai-video, video-generation, google-veo, rest-api, ai-api, aivideo, AI API, REST API, Developer API, Ace Data Cloud
 
 ## Get your Ace Data Cloud API key
 
-1. Open [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_api_key). Sign in, or register an account first.
-2. Find **General application**. If it has not been created, choose **Initialize General Application**. A general key can use the services available to your account; a dedicated application's key is limited to its service. Check the required service/model access and [current pricing](https://platform.acedata.cloud/models?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_pricing).
+1. Open [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen). Sign in, or register an account first.
+2. Find **General application**. If it has not been created, choose **Initialize General Application**. A general key can use the services available to your account; a dedicated application's key is limited to its service. Check the required service/model access and [current pricing](https://platform.acedata.cloud/models?utm_source=github&utm_medium=referral&utm_campaign=evergreen).
 3. Copy the **API Key** from the application card, or open **Keys / Manage Keys → Create** to create a separate key for this integration. Give it a recognizable name so you can revoke or rotate it independently.
 4. When creating a key, review **Expiration Time**, **Set Usage Limitation**, and **Allowed APIs**. Enable only the restrictions you need, allow the operations you will call, then click **Create** and copy the token from the key list. Task lookup does not grant permission to submit a generation. Confirm the application's balance can cover your first request; any trial allowance is whatever your account currently displays.
 5. Copy only the token value, without quotation marks, spaces, or `Bearer `. An API Key / API Token field expects this raw value; only a manually configured HTTP `Authorization` header needs the `Bearer ` prefix. A `platform-...` account-management token cannot replace a generation API key.
@@ -1005,8 +1005,8 @@ print(response.json())</pre>
 <li><span class="price-ck">✓</span> Webhook + Task Polling</li>
 <li><span class="price-ck">✓</span> Task Polling—<strong>Free</strong></li>
 </ul>
-<a href="https://platform.acedata.cloud/services/veo?tab=pricing&utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_services_veo" class="price-btn price-btn-fill">View Pricing Details</a>
-<a href="https://platform.acedata.cloud/documents/veo-videos?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents_veo_videos" class="price-btn price-btn-out" style="margin-top:8px">View API Documentation</a>
+<a href="https://platform.acedata.cloud/services/veo?tab=pricing&utm_source=github&utm_medium=referral&utm_campaign=evergreen" class="price-btn price-btn-fill">View Pricing Details</a>
+<a href="https://platform.acedata.cloud/documents/veo-videos?utm_source=github&utm_medium=referral&utm_campaign=evergreen" class="price-btn price-btn-out" style="margin-top:8px">View API Documentation</a>
 </div>
 <div class="price-card">
 <div class="price-tier">Enterprise Edition</div>
@@ -1021,8 +1021,8 @@ print(response.json())</pre>
 ## Quick Start
 
 - Base URL: [https://api.acedata.cloud](https://api.acedata.cloud)
-- Service page: [Veo Video Generation on Ace Data Cloud](https://platform.acedata.cloud/services/73cd74ba-a1bd-4a12-8df6-11d64c38df14?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_services_73cd74ba_a1bd_4a12_8df6_11d64c38df14)
-- Docs: [Developer documentation](https://platform.acedata.cloud/documents?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents)
+- Service page: [Veo Video Generation on Ace Data Cloud](https://platform.acedata.cloud/services/73cd74ba-a1bd-4a12-8df6-11d64c38df14?utm_source=github&utm_medium=referral&utm_campaign=evergreen)
+- Docs: [Developer documentation](https://platform.acedata.cloud/documents?utm_source=github&utm_medium=referral&utm_campaign=evergreen)
 
 ```bash
 curl --request POST "https://api.acedata.cloud/veo/videos" \
@@ -1037,8 +1037,8 @@ Explore the supported endpoints and integration guides for Veo Video Generation.
 
 | API | Path | Integration Guidance |
 | ---- | ---- | ------------ |
-| [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents_63e01dc3_eb21_499e_8049_3025c460058f) | `/veo/videos` | [Veo Videos Generation API Integration Guide](https://platform.acedata.cloud/documents/0df6db8d-8b46-4af8-bca5-a15166b938e2?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents_0df6db8d_8b46_4af8_bca5_a15166b938e2) |
-| [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents_52778f8b_93ce_4db3_a62c_bcf0a92e5f3c) | `/veo/tasks` | [Veo Tasks API Integration Guide](https://platform.acedata.cloud/documents/add58f98-765a-4c2a-b036-a60ee6044879?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents_add58f98_765a_4c2a_b036_a60ee6044879) |
+| [Veo Videos Generation API](https://platform.acedata.cloud/documents/63e01dc3-eb21-499e-8049-3025c460058f?utm_source=github&utm_medium=referral&utm_campaign=evergreen) | `/veo/videos` | [Veo Videos Generation API Integration Guide](https://platform.acedata.cloud/documents/0df6db8d-8b46-4af8-bca5-a15166b938e2?utm_source=github&utm_medium=referral&utm_campaign=evergreen) |
+| [Veo Tasks API](https://platform.acedata.cloud/documents/52778f8b-93ce-4db3-a62c-bcf0a92e5f3c?utm_source=github&utm_medium=referral&utm_campaign=evergreen) | `/veo/tasks` | [Veo Tasks API Integration Guide](https://platform.acedata.cloud/documents/add58f98-765a-4c2a-b036-a60ee6044879?utm_source=github&utm_medium=referral&utm_campaign=evergreen) |
 | Veo Upsample API | `/veo/upsample` | [Veo Upsample API Integration Guide](docs/veo_upsample_api_integration_guide.md) |
 | Veo Extend API | `/veo/extend` | [Veo Extend API Integration Guide](docs/veo_extend_api_integration_guide.md) |
 | Veo Reshoot API | `/veo/reshoot` | [Veo Reshoot API Integration Guide](docs/veo_reshoot_api_integration_guide.md) |
@@ -1046,11 +1046,11 @@ Explore the supported endpoints and integration guides for Veo Video Generation.
 
 ## Related Resources
 
-- [Ace Data Cloud Developer Platform](https://platform.acedata.cloud?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_platform)
-- [Ace Data Cloud Docs](https://platform.acedata.cloud/documents?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents)
+- [Ace Data Cloud Developer Platform](https://platform.acedata.cloud?utm_source=github&utm_medium=referral&utm_campaign=evergreen)
+- [Ace Data Cloud Docs](https://platform.acedata.cloud/documents?utm_source=github&utm_medium=referral&utm_campaign=evergreen)
 - [Status Page](https://status.acedata.cloud)
 - [Ace Data Cloud GitHub Organization](https://github.com/AceDataCloud)
 
 ## Support
 
-If you meet any issue, please check [support info](https://platform.acedata.cloud/support?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_support) or browse the latest documentation on [docs.acedata.cloud](https://platform.acedata.cloud/documents?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=veo_api_readme_documents).
+If you meet any issue, please check [support info](https://platform.acedata.cloud/support?utm_source=github&utm_medium=referral&utm_campaign=evergreen) or browse the latest documentation on [docs.acedata.cloud](https://platform.acedata.cloud/documents?utm_source=github&utm_medium=referral&utm_campaign=evergreen).
